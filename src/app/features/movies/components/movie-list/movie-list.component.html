@@ -1,1 +1,5 @@
-<p>movie-list works!</p>
+<div class="flex flex-wrap justify-center gap-3 mt-5">
+  @for(movie of movieList(); track movie.id){
+    <app-movie-item [movie]="movie"></app-movie-item>
+  }
+</div>
