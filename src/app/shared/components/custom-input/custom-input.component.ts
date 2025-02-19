@@ -1,4 +1,4 @@
-import {Component, forwardRef, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, input} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -13,10 +13,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       multi: true,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomInputComponent implements ControlValueAccessor {
   value = '';
   label = input<string>('')
+  placeholder = input<string>('')
 
   onChange = (value: string) => {};
   onTouched = () => {};
@@ -39,4 +41,5 @@ export class CustomInputComponent implements ControlValueAccessor {
     this.onChange(newValue);
     this.onTouched();
   }
+
 }

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import {Component, effect, input} from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -10,4 +10,10 @@ import { NgClass } from '@angular/common';
 export class MainButtonComponent {
   text = input<string>('');
   isDisabled = input<boolean>(false);
+
+  constructor() {
+    effect(() => {
+      console.log('IsDis', this.isDisabled())
+    });
+  }
 }

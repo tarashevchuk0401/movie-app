@@ -1,9 +1,10 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CustomInputComponent } from '../../../shared/components/custom-input/custom-input.component';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [RouterLink, CustomInputComponent],
   templateUrl: './header.component.html',
   standalone: true,
   styleUrl: './header.component.css',
