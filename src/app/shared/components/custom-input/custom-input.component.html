@@ -1,0 +1,9 @@
+<div class="p-3">
+  <label class="text-white">{{ label() }}</label>
+  <input
+    type="text"
+    [value]="value"
+    (input)="onInputChange($event)"
+    class="p-2 w-full bg-gray-200 rounded border-none outline-none focus:ring-0 focus:border-transparent"
+  />
+</div>

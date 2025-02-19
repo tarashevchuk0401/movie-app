@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './core/layout/layout.component';
 import { MovieComponent } from './features/movies/pages/movie/movie.component';
-import { NewMovieComponent } from './features/movies/components/new-movie/new-movie.component';
+import {NewMovieComponent} from './features/movies/pages/new-movie/new-movie.component';
 
 export const routes: Routes = [
   {
@@ -9,7 +9,7 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: MovieComponent },
-      { path: 'new', component: NewMovieComponent },
+      { path: 'new-movie', component: NewMovieComponent },
     ],
   },
 ];
