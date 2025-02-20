@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, forwardRef, input} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  forwardRef,
+  inject,
+  input,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -13,18 +20,20 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       multi: true,
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomInputComponent implements ControlValueAccessor {
   value = '';
-  label = input<string>('')
-  placeholder = input<string>('')
+  label = input<string>('');
+  placeholder = input<string>('');
+  cdr = inject(ChangeDetectorRef);
 
   onChange = (value: string) => {};
   onTouched = () => {};
 
   writeValue(value: string): void {
     this.value = value;
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: any): void {
@@ -40,6 +49,6 @@ export class CustomInputComponent implements ControlValueAccessor {
     this.value = newValue;
     this.onChange(newValue);
     this.onTouched();
+    this.cdr.markForCheck();
   }
-
 }

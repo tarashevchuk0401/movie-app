@@ -1,8 +1,8 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
-  forwardRef,
+  forwardRef, inject,
   input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -28,17 +28,19 @@ export class CustomSelectorComponent implements AfterViewInit {
   label = input<string>('');
   optionList = input.required<{ value: string; id: number }[]>();
   value = '';
+  cdr = inject(ChangeDetectorRef);
+
 
   ngAfterViewInit() {
-    this.value = this.optionList()[0].value;
-    this.onOptionChange(this.value);
+    this.onOptionChange(this.optionList()[1]);
   }
 
-  private onChange: (value: string) => void = () => {};
+  private onChange: (value: string) => void = () => { this.cdr.markForCheck();};
   private onTouched: () => void = () => {};
 
   writeValue(value: string): void {
     this.value = value;
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: any): void {
@@ -53,5 +55,6 @@ export class CustomSelectorComponent implements AfterViewInit {
     this.value = value.value;
     this.onChange(value.value);
     this.onTouched();
+    this.cdr.markForCheck();
   }
 }

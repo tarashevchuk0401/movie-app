@@ -2,8 +2,7 @@
   <p class="text-2xl text-center text-white">Add new movie</p>
   <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
     <app-custom-input formControlName="title" [label]="'Title'"></app-custom-input>
-    <app-custom-input formControlName="plot" [label]="'Plot'"></app-custom-input>
-    <app-custom-input formControlName="website" [label]="'Web site'"></app-custom-input>
+    <app-custom-input formControlName="description" [label]="'Description'"></app-custom-input>
     <app-custom-selector formControlName="category" [label]="'Category'" [optionList]="categories"></app-custom-selector>
     <div class="flex justify-center">
       <app-main-button [text]="'Send'" [isDisabled]="movieForm.invalid"></app-main-button>
