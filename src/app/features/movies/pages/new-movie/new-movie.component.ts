@@ -36,7 +36,7 @@ import { UniqueTitleValidator } from '../../../../core/validators/unique-title.v
   styleUrl: './new-movie.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NewMovieComponent implements OnInit {
+export class NewMovieComponent {
   private formBuilder = inject(FormBuilder);
   categories = Categories;
   moviesService = inject(MovieService);
