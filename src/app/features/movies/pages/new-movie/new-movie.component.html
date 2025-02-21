@@ -18,6 +18,13 @@
 
     <div class="mt-5">
       <app-main-button class="mt-2" (click)="addActor()" [text]="'AddActor'" ></app-main-button>
+
+      @if(movieForm.controls.actors.length){
+      <div class="my-3">
+        <label id="Validate_actor" class="text-white">Validate actors</label>
+        <input class="mx-4" type="checkbox" name="Validate_actor" [value]="validateActors()" (change)="toggleActorValidation()">
+      </div>
+      }
     </div>
 
     <div class="flex justify-center">

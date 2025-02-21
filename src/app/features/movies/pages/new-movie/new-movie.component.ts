@@ -3,7 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   DestroyRef,
-  inject,
+  inject, model,
   OnInit,
 } from '@angular/core';
 import {
@@ -43,6 +43,7 @@ export class NewMovieComponent implements OnInit {
   cdr = inject(ChangeDetectorRef);
   destroyRef = inject(DestroyRef);
   uniqueTitleValidator = inject(UniqueTitleValidator);
+  validateActors = model(false)
 
   movieForm = this.formBuilder.nonNullable.group({
     title: this.formBuilder.nonNullable.control('Star wars', {
@@ -60,23 +61,30 @@ export class NewMovieComponent implements OnInit {
     return this.movieForm.get('actors') as FormArray;
   }
 
-  newSkill(): FormGroup {
+  newActor(): FormGroup {
     return this.formBuilder.group({
-      actor: ['', Validators.required],
+      actor: [''],
     });
   }
 
   addActor() {
-    this.actors.push(this.newSkill());
+    this.actors.push(this.newActor());
   }
 
   removeActor(i: number) {
     this.actors.removeAt(i);
   }
 
-  ngOnInit() {
-    this.movieForm.valueChanges.subscribe(() => {
-      console.log(this.movieForm);
+  toggleActorValidation() {
+    this.validateActors.update(value => !value)
+
+    this.actors.controls.forEach((control) => {
+      if (this.validateActors()) {
+        control.get('actor')?.setValidators([Validators.required]);
+      } else {
+        control.get('actor')?.clearValidators();
+      }
+      control.get('actor')?.updateValueAndValidity();
     });
   }
 
