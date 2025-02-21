@@ -5,4 +5,5 @@ export interface Movie {
   category: string;
   rating: number;
   description: string;
+  actors?: string[]
 }

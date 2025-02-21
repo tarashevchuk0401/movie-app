@@ -5,7 +5,8 @@
       'text-black': true,
     }"
     [disabled]="isDisabled()"
-    class=" m-2 px-4 py-2 rounded focus:outline-none"
+    class="px-4 py-2 rounded focus:outline-none"
+    [type]="type()"
   >
     {{ text() }}
   </button>

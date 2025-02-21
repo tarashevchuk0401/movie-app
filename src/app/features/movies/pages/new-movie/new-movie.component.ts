@@ -3,10 +3,13 @@ import {
   ChangeDetectorRef,
   Component,
   DestroyRef,
-  inject, OnInit,
+  inject,
+  OnInit,
 } from '@angular/core';
 import {
+  FormArray,
   FormBuilder,
+  FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
@@ -18,7 +21,7 @@ import { Categories } from '../../interfaces/categories';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../interfaces/movie';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {UniqueTitleValidator} from '../../../../core/validators/unique-title.validator';
+import { UniqueTitleValidator } from '../../../../core/validators/unique-title.validator';
 
 @Component({
   selector: 'app-new-movie',
@@ -33,7 +36,7 @@ import {UniqueTitleValidator} from '../../../../core/validators/unique-title.val
   styleUrl: './new-movie.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NewMovieComponent implements OnInit{
+export class NewMovieComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   categories = Categories;
   moviesService = inject(MovieService);
@@ -43,21 +46,42 @@ export class NewMovieComponent implements OnInit{
 
   movieForm = this.formBuilder.nonNullable.group({
     title: this.formBuilder.nonNullable.control('Star wars', {
-      asyncValidators: [this.uniqueTitleValidator.titleValidator(this.moviesService)],
+      asyncValidators: [
+        this.uniqueTitleValidator.titleValidator(this.moviesService),
+      ],
       updateOn: 'blur',
     }),
     description: ['Some description about your movie', Validators.required],
     category: ['', Validators.required],
+    actors: this.formBuilder.array([]),
   });
 
-  ngOnInit(){
+  get actors(): FormArray {
+    return this.movieForm.get('actors') as FormArray;
+  }
+
+  newSkill(): FormGroup {
+    return this.formBuilder.group({
+      actor: ['', Validators.required],
+    });
+  }
+
+  addActor() {
+    this.actors.push(this.newSkill());
+  }
+
+  removeActor(i: number) {
+    this.actors.removeAt(i);
+  }
+
+  ngOnInit() {
     this.movieForm.valueChanges.subscribe(() => {
-      console.log(this.movieForm)
-    })
+      console.log(this.movieForm);
+    });
   }
 
   onSubmit() {
-    const movie: Omit<Movie, 'id'> = {
+    const movie: Omit<Movie, 'id' | 'actors'> = {
       year: Math.floor(Math.random() * (2024 - 1999 + 1)) + 1999,
       rating: Math.floor(Math.random() * 10) + 1,
       ...this.movieForm.getRawValue(),

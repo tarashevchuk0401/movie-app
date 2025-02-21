@@ -1,14 +1,30 @@
-<div class="mt-5">
+<div class="mt-5 w-85">
   <p class="text-2xl text-center text-white">Add new movie</p>
   <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
     <app-custom-input formControlName="title" [label]="'Title'"></app-custom-input>
     <app-custom-input formControlName="description" [label]="'Description'"></app-custom-input>
     <app-custom-selector formControlName="category" [label]="'Category'" [optionList]="categories"></app-custom-selector>
+
+    <div formArrayName="actors">
+      @for(actor of actors.controls; track actor; let i = $index){
+        <div class="flex items-end justify-between" [formGroupName]="i">
+          <div class="w-2/3">
+            <app-custom-input formControlName="actor" [label]="'Actor'" placeholder="Actor"></app-custom-input>
+          </div>
+          <app-main-button (click)="removeActor(i)" [text]="'Remove'"></app-main-button>
+        </div>
+      }
+    </div>
+
+    <div class="mt-5">
+      <app-main-button class="mt-2" (click)="addActor()" [text]="'AddActor'" ></app-main-button>
+    </div>
+
     <div class="flex justify-center">
-      <app-main-button [text]="'Send'" [isDisabled]="movieForm.invalid"></app-main-button>
+      <app-main-button [type]="'submit'" [text]="'Send'" [isDisabled]="movieForm.invalid"></app-main-button>
     </div>
     @if(movieForm.controls.title.errors?.['titleNotUnique']){
       <div class="text-red-700 text-center mt-2 text-md">Movie with this title already exist</div>
     }
-  </form>
+    </form>
 </div>

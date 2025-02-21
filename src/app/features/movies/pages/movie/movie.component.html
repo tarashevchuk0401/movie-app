@@ -1,6 +1,8 @@
-<main class=" ">
+<main >
   <a routerLink="/new-movie">
-    <app-main-button [text]="'Add new movie'" ></app-main-button>
+    <div class="mt-3">
+      <app-main-button [text]="'Add new movie'" ></app-main-button>
+    </div>
   </a>
   <app-movie-list [movieList]="movieStore.movieList()"></app-movie-list>
 </main>

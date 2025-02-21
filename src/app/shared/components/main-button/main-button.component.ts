@@ -11,4 +11,5 @@ import { NgClass } from '@angular/common';
 export class MainButtonComponent {
   text = input<string>('');
   isDisabled = input<boolean>(false);
+  type = input('button')
 }
