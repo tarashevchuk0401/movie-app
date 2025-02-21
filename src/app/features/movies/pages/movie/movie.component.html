@@ -2,5 +2,5 @@
   <a routerLink="/new-movie">
     <app-main-button [text]="'Add new movie'" ></app-main-button>
   </a>
-  <app-movie-list [movieList]="movieList()" (deleteItem)="deleteItem($event)"></app-movie-list>
+  <app-movie-list [movieList]="movieStore.movieList()"></app-movie-list>
 </main>

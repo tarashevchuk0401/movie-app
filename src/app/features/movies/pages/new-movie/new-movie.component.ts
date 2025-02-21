@@ -3,7 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   DestroyRef,
-  inject,
+  inject, OnInit,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -18,6 +18,7 @@ import { Categories } from '../../interfaces/categories';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../interfaces/movie';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {UniqueTitleValidator} from '../../../../core/validators/unique-title.validator';
 
 @Component({
   selector: 'app-new-movie',
@@ -32,18 +33,28 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './new-movie.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NewMovieComponent {
+export class NewMovieComponent implements OnInit{
   private formBuilder = inject(FormBuilder);
   categories = Categories;
   moviesService = inject(MovieService);
   cdr = inject(ChangeDetectorRef);
   destroyRef = inject(DestroyRef);
+  uniqueTitleValidator = inject(UniqueTitleValidator);
 
   movieForm = this.formBuilder.nonNullable.group({
-    title: ['Star wars', Validators.required],
-    description: ['Star wars film. Star wars film', Validators.required],
+    title: this.formBuilder.nonNullable.control('Star wars', {
+      asyncValidators: [this.uniqueTitleValidator.titleValidator(this.moviesService)],
+      updateOn: 'blur',
+    }),
+    description: ['Some description about your movie', Validators.required],
     category: ['', Validators.required],
   });
+
+  ngOnInit(){
+    this.movieForm.valueChanges.subscribe(() => {
+      console.log(this.movieForm)
+    })
+  }
 
   onSubmit() {
     const movie: Omit<Movie, 'id'> = {

@@ -11,5 +11,5 @@
       {{ movie().description.slice(0, 150) }}
     </p>
   </div>
-  <app-main-button (click)="deleteItem.emit(movie().id)" [text]="'Delete'"></app-main-button>
+  <app-main-button (click)="deleteItem(movie().id)" [text]="'Delete'"></app-main-button>
 </div>

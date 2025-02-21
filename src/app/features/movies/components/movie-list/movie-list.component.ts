@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   input,
-  output,
 } from '@angular/core';
 import { Movie } from '../../interfaces/movie';
 import { MovieItemComponent } from '../movie-item/movie-item.component';
@@ -16,5 +15,4 @@ import { MovieItemComponent } from '../movie-item/movie-item.component';
 })
 export class MovieListComponent {
   movieList = input<Movie[]>([]);
-  deleteItem = output<number>();
 }

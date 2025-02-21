@@ -7,5 +7,8 @@
     <div class="flex justify-center">
       <app-main-button [text]="'Send'" [isDisabled]="movieForm.invalid"></app-main-button>
     </div>
+    @if(movieForm.controls.title.errors?.['titleNotUnique']){
+      <div class="text-red-700 text-center mt-2 text-md">Movie with this title already exist</div>
+    }
   </form>
 </div>
