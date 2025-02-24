@@ -1,14 +1,17 @@
 <main class="bg-red-300 min-w-300 flex justify-between flex-col">
   <div class="flex justify-around">
-  <a routerLink="/home/movie/company">
-    <app-main-button text="Company"></app-main-button>
-  </a>
-  <a routerLink="/home/movie/actor">
-    <app-main-button text="Actor"></app-main-button>
-  </a>
+    <a [routerLink]="['/home/movie', movieId, 'company']">
+      <app-main-button>
+        <span>Company</span>
+      </app-main-button>
+    </a>
+    <a [routerLink]="['/home/movie', movieId, 'actor']">
+      <app-main-button>
+      <span>Actor</span>
+      </app-main-button>
+    </a>
   </div>
   <p>Information about movie</p>
-  <div>{{moviesStore.movie() | json}}</div>
+  <div>{{ moviesStore.movie() | json }}</div>
   <router-outlet></router-outlet>
 </main>
-

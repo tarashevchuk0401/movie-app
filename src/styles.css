@@ -1,17 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
-body{
+html,
+body {
+  height: 100%;
   background: #000;
 }
-
-
-/*.xng-breadcrumb-root {*/
-/*  padding: 8px 16px;*/
-/*  display: block;*/
-/*  border-radius: 4px;*/
-
-/*  xng-breadcrumb-list {*/
-/*    text-align: end;*/
-/*  }*/
-/*}*/
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

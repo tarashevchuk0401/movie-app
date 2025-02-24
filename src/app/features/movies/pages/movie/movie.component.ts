@@ -10,10 +10,11 @@ import { MainButtonComponent } from '../../../../shared/components/main-button/m
 import { MovieService } from '../../services/movie.service';
 import { MovieStore } from '../../store/movie.store';
 import {BreadcrumbService} from 'xng-breadcrumb';
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-movie',
-  imports: [MovieListComponent, RouterLink, MainButtonComponent],
+  imports: [MovieListComponent, RouterLink, MainButtonComponent, MatPaginatorModule],
   templateUrl: './movie.component.html',
   providers: [MovieService],
   styleUrl: './movie.component.css',
@@ -22,6 +23,9 @@ import {BreadcrumbService} from 'xng-breadcrumb';
 export class MovieComponent implements OnInit {
   movieStore = inject(MovieStore);
   breadcrumbService = inject(BreadcrumbService);
+  page = 1
+  pageSize = 10
+  length = this.movieStore.total();
 
   ngOnInit() {
     this.getList();
@@ -29,6 +33,12 @@ export class MovieComponent implements OnInit {
   }
 
   getList() {
-    this.movieStore.getList();
+    this.movieStore.getList({page: this.page,pageSize: this.pageSize});
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.page = event.pageIndex + 1
+    this.pageSize = event.pageSize;
+    this.movieStore.getList({page: this.page,pageSize: this.pageSize});
   }
 }

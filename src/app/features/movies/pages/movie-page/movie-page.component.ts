@@ -15,10 +15,11 @@ export class MoviePageComponent implements OnInit {
   breadcrumbService = inject(BreadcrumbService);
   activatedRoute = inject(ActivatedRoute);
   moviesStore = inject(MovieStore);
+  movieId: string | null = null
 
   ngOnInit() {
     this.breadcrumbService.set('@movie', 'Movie');
-    const movieId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.moviesStore.getItem(Number(movieId));
+    this.movieId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.moviesStore.getItem(Number(this.movieId));
   }
 }

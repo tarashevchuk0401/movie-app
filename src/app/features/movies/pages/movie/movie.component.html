@@ -1,8 +1,15 @@
 <main >
   <a routerLink="/home/new-movie">
     <div class="mt-3">
-      <app-main-button [text]="'Add new movie'" ></app-main-button>
+      <app-main-button ><span>Add new movie</span></app-main-button>
     </div>
   </a>
+  <mat-paginator [length]="movieStore.total()"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[5, 10, 15]"
+                 (page)="handlePageEvent($event)"
+                 aria-label="Select page">
+  </mat-paginator>
+
   <app-movie-list [movieList]="movieStore.movieList()"></app-movie-list>
 </main>

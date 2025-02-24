@@ -23,6 +23,7 @@ import { Movie } from '../../interfaces/movie';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UniqueTitleValidator } from '../../../../core/validators/unique-title.validator';
 import {BreadcrumbService} from 'xng-breadcrumb';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-new-movie',
@@ -32,6 +33,7 @@ import {BreadcrumbService} from 'xng-breadcrumb';
     ReactiveFormsModule,
     MainButtonComponent,
     CustomSelectorComponent,
+    MatIcon
   ],
   templateUrl: './new-movie.component.html',
   styleUrl: './new-movie.component.css',

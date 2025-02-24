@@ -1,0 +1,11 @@
+mat-paginator{
+  background-color:rgb(17,24,39);
+  color: white;
+  font-size: 1.2rem;
+}
+
+::ng-deep mat-select {
+  color: white !important;
+  font-size: 1.2rem;
+}
+

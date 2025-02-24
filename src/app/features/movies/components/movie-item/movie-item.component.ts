@@ -4,10 +4,11 @@ import { MainButtonComponent } from '../../../../shared/components/main-button/m
 import {MovieStore} from '../../store/movie.store';
 import {MovieService} from '../../services/movie.service';
 import {RouterLink} from '@angular/router';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-movie-item',
-  imports: [MainButtonComponent, RouterLink],
+  imports: [MainButtonComponent, RouterLink, MatIcon],
   templateUrl: './movie-item.component.html',
   providers: [MovieService],
   styleUrl: './movie-item.component.css',

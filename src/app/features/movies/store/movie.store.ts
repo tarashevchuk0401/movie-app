@@ -10,24 +10,26 @@ import { Movie } from '../interfaces/movie';
 import { computed, inject } from '@angular/core';
 import { MovieService } from '../services/movie.service';
 import {first, tap} from 'rxjs';
+import {ListParams} from '../../../core/interfaces/list-params';
 
 export const MovieStore = signalStore(
   { providedIn: 'root' },
   withState({
     movieList: [] as Movie[],
     movie: {} as Movie,
+    total: 0
   }),
   withComputed(({ movieList }) => ({
     movieCount: computed(() => movieList().length),
   })),
   withMethods((store, movieService = inject(MovieService)) => ({
-    getList: () => {
+    getList: (params : ListParams) => {
       movieService
-        .getList()
+        .getList(params)
         .pipe(first())
-        .subscribe((d) => {
+        .subscribe((listResponse) => {
           patchState(store, () => {
-            return { movieList: [...d.data] };
+            return { movieList: [...listResponse.data] , total : listResponse.total};
           });
         });
     },

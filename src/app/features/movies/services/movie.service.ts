@@ -4,13 +4,15 @@ import { ListResponse } from '../../../core/interfaces/list-response';
 import { Movie } from '../interfaces/movie';
 import { Observable} from 'rxjs';
 import { SuccessResponse } from '../../../core/interfaces/success-response';
+import {ListParams} from '../../../core/interfaces/list-params';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService extends ApiService {
-  getList(): Observable<ListResponse<Movie>> {
-    return this.http.get<ListResponse<Movie>>(`${this.baseUrl}/movie/list`);
+  getList(params: ListParams): Observable<ListResponse<Movie>> {
+    const {page, pageSize} = params
+    return this.http.get<ListResponse<Movie>>(`${this.baseUrl}/movie/list`, { params : { page , pageSize } });
   }
 
   getItem(id:number): Observable<Movie> {
