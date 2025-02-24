@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { MainButtonComponent } from '../../../../shared/components/main-button/main-button.component';
 import { MovieService } from '../../services/movie.service';
 import { MovieStore } from '../../store/movie.store';
+import {BreadcrumbService} from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-movie',
@@ -20,9 +21,11 @@ import { MovieStore } from '../../store/movie.store';
 })
 export class MovieComponent implements OnInit {
   movieStore = inject(MovieStore);
+  breadcrumbService = inject(BreadcrumbService);
 
   ngOnInit() {
     this.getList();
+    this.breadcrumbService.set('@list', 'Movie list')
   }
 
   getList() {

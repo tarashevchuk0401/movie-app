@@ -1,13 +1,15 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
-  forwardRef, inject,
+  inject,
   input,
+  Self,
   ViewEncapsulation,
 } from '@angular/core';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormsModule, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-selector',
@@ -15,13 +17,6 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
   templateUrl: './custom-selector.component.html',
   styleUrl: './custom-selector.component.css',
   encapsulation: ViewEncapsulation.None,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CustomSelectorComponent),
-      multi: true,
-    },
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomSelectorComponent implements AfterViewInit {
@@ -30,12 +25,18 @@ export class CustomSelectorComponent implements AfterViewInit {
   value = '';
   cdr = inject(ChangeDetectorRef);
 
+  constructor(@Self() public controlDir: NgControl) {
+    console.log('!', this.controlDir);
+    this.controlDir.valueAccessor = this;
+  }
 
   ngAfterViewInit() {
     this.onOptionChange(this.optionList()[1]);
   }
 
-  private onChange: (value: string) => void = () => { this.cdr.markForCheck();};
+  private onChange: (value: string) => void = () => {
+    this.cdr.markForCheck();
+  };
   private onTouched: () => void = () => {};
 
   writeValue(value: string): void {

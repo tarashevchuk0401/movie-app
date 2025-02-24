@@ -13,6 +13,10 @@ export class MovieService extends ApiService {
     return this.http.get<ListResponse<Movie>>(`${this.baseUrl}/movie/list`);
   }
 
+  getItem(id:number): Observable<Movie> {
+    return this.http.get<Movie>(`${this.baseUrl}/movie/item/${id}`);
+  }
+
   createMovie(movie: Omit<Movie, 'id'>): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>(`${this.baseUrl}/movie/item`, movie);
   }

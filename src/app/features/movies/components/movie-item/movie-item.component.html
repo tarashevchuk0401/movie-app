@@ -11,5 +11,8 @@
       {{ movie().description.slice(0, 150) }}
     </p>
   </div>
-  <app-main-button (click)="deleteItem(movie().id)" [text]="'Delete'"></app-main-button>
+  <div class="flex justify-between">
+    <app-main-button (click)="deleteItem(movie().id)" [text]="'Delete'"></app-main-button>
+    <app-main-button [routerLink]="'/home/movie/' + movie().id" [text]="'Details'"></app-main-button>
+  </div>
 </div>

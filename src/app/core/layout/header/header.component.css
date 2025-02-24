@@ -1,0 +1,9 @@
+::ng-deep .xng-breadcrumb-root {
+  padding: 8px 16px;
+  display: block;
+  border-radius: 4px;
+}
+
+::ng-deep xng-breadcrumb-list {
+  text-align: end;
+}

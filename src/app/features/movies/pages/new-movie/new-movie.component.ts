@@ -22,6 +22,7 @@ import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../interfaces/movie';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UniqueTitleValidator } from '../../../../core/validators/unique-title.validator';
+import {BreadcrumbService} from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-new-movie',
@@ -36,14 +37,16 @@ import { UniqueTitleValidator } from '../../../../core/validators/unique-title.v
   styleUrl: './new-movie.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NewMovieComponent {
+export class NewMovieComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
-  categories = Categories;
   moviesService = inject(MovieService);
   cdr = inject(ChangeDetectorRef);
   destroyRef = inject(DestroyRef);
   uniqueTitleValidator = inject(UniqueTitleValidator);
-  validateActors = model(false)
+  breadcrumbService = inject(BreadcrumbService)
+  validateActors = model(false);
+  categories = Categories;
+
 
   movieForm = this.formBuilder.nonNullable.group({
     title: this.formBuilder.nonNullable.control('Star wars', {
@@ -61,6 +64,10 @@ export class NewMovieComponent {
     return this.movieForm.get('actors') as FormArray;
   }
 
+  ngOnInit() {
+    this.breadcrumbService.set('@new-movie', 'Add new movie')
+  }
+
   newActor(): FormGroup {
     return this.formBuilder.group({
       actor: [''],
@@ -76,7 +83,7 @@ export class NewMovieComponent {
   }
 
   toggleActorValidation() {
-    this.validateActors.update(value => !value)
+    this.validateActors.update((value) => !value);
 
     this.actors.controls.forEach((control) => {
       if (this.validateActors()) {
