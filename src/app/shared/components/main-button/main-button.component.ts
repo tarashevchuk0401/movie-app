@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, ViewEncapsulation} from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -6,7 +6,8 @@ import { NgClass } from '@angular/common';
   imports: [NgClass],
   templateUrl: './main-button.component.html',
   styleUrl: './main-button.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class MainButtonComponent {
   text = input<string>('');
