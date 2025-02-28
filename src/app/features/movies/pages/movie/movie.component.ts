@@ -1,6 +1,7 @@
 import {
+  AfterContentChecked,
   ChangeDetectionStrategy,
-  Component,
+  Component, ElementRef,
   inject,
   OnInit,
 } from '@angular/core';
@@ -14,7 +15,12 @@ import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-movie',
-  imports: [MovieListComponent, RouterLink, MainButtonComponent, MatPaginatorModule],
+  imports: [
+    MovieListComponent,
+    RouterLink,
+    MainButtonComponent,
+    MatPaginatorModule,
+  ],
   templateUrl: './movie.component.html',
   providers: [MovieService],
   styleUrl: './movie.component.css',
@@ -23,22 +29,23 @@ import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 export class MovieComponent implements OnInit {
   movieStore = inject(MovieStore);
   breadcrumbService = inject(BreadcrumbService);
-  page = 1
-  pageSize = 10
+  page = 1;
+  pageSize = 10;
   length = this.movieStore.total();
 
   ngOnInit() {
     this.getList();
-    this.breadcrumbService.set('@list', 'Movie list')
+    this.breadcrumbService.set('@list', 'Movie list');
   }
 
+
   getList() {
-    this.movieStore.getList({page: this.page,pageSize: this.pageSize});
+    this.movieStore.getList({ page: this.page, pageSize: this.pageSize });
   }
 
   handlePageEvent(event: PageEvent) {
-    this.page = event.pageIndex + 1
+    this.page = event.pageIndex + 1;
     this.pageSize = event.pageSize;
-    this.movieStore.getList({page: this.page,pageSize: this.pageSize});
+    this.movieStore.getList({ page: this.page, pageSize: this.pageSize });
   }
 }

@@ -7,7 +7,6 @@ import { NgClass } from '@angular/common';
   templateUrl: './main-button.component.html',
   styleUrl: './main-button.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class MainButtonComponent {
   text = input<string>('');
