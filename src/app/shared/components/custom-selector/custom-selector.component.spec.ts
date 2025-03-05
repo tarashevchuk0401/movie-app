@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CustomSelectorComponent } from './custom-selector.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('CustomSelectorComponent', () => {
   let component: CustomSelectorComponent;
@@ -8,9 +8,9 @@ describe('CustomSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CustomSelectorComponent]
-    })
-    .compileComponents();
+      imports: [FormsModule, ReactiveFormsModule, CustomSelectorComponent],
+      declarations: []
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CustomSelectorComponent);
     component = fixture.componentInstance;

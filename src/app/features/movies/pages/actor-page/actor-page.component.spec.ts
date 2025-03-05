@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActorPageComponent } from './actor-page.component';
+import {provideRouter} from '@angular/router';
 
 describe('ActorPageComponent', () => {
   let component: ActorPageComponent;
@@ -8,7 +9,10 @@ describe('ActorPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ActorPageComponent]
+      imports: [ActorPageComponent],
+      providers: [
+        provideRouter([]),
+      ],
     })
     .compileComponents();
 

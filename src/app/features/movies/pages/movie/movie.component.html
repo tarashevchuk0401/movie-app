@@ -11,5 +11,10 @@
                  aria-label="Select page">
   </mat-paginator>
 
-  <app-movie-list [movieList]="movieStore.movieList()"></app-movie-list>
+  @if(movieStore.movieList().length){
+    <app-movie-list [movieList]="movieStore.movieList()"></app-movie-list>
+  } @else {
+    <div style="color: red">No Movies...</div>
+  }
+
 </main>

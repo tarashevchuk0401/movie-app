@@ -3,35 +3,55 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  forwardRef,
   inject,
   input,
+  Optional,
   Self,
   ViewEncapsulation,
 } from '@angular/core';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule, NgControl } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-custom-selector',
   imports: [NgSelectModule, FormsModule],
   templateUrl: './custom-selector.component.html',
   styleUrl: './custom-selector.component.css',
+  // providers: [
+  //   {
+  //     provide: NG_VALUE_ACCESSOR,
+  //     useExisting: forwardRef(() => CustomSelectorComponent),
+  //     multi: true,
+  //   },
+  // ],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomSelectorComponent implements AfterViewInit {
+export class CustomSelectorComponent
+  implements AfterViewInit, ControlValueAccessor
+{
   label = input<string>('');
-  optionList = input.required<{ value: string; id: number }[]>();
+  optionList = input<{ value: string; id: number }[]>();
+
   value = '';
   cdr = inject(ChangeDetectorRef);
 
-  constructor(@Self() public controlDir: NgControl) {
-    console.log('!', this.controlDir);
-    this.controlDir.valueAccessor = this;
+  constructor(@Self() @Optional() public controlDir: NgControl) {
+    if (this.controlDir) {
+      this.controlDir.valueAccessor = this;
+    }
   }
 
   ngAfterViewInit() {
-    this.onOptionChange(this.optionList()[1]);
+    if (this.optionList.length) {
+      this.onOptionChange(this.optionList()![1]);
+    }
   }
 
   private onChange: (value: string) => void = () => {

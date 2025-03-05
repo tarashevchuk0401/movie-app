@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MoviePageComponent } from './movie-page.component';
+import {provideRouter} from '@angular/router';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('MoviePageComponent', () => {
   let component: MoviePageComponent;
@@ -8,7 +10,10 @@ describe('MoviePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MoviePageComponent]
+      imports: [MoviePageComponent, HttpClientTestingModule],
+      providers: [
+        provideRouter([]),
+      ],
     })
     .compileComponents();
 
