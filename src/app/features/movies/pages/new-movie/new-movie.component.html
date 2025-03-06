@@ -1,43 +1,70 @@
-<div class="mt-5 w-85">
-  <p class="text-2xl text-center text-white">Add new movie</p>
+<div class="form-container">
+  <p class="form-title">Add new movie</p>
   <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
-    <app-custom-input formControlName="title" [label]="'Title'"></app-custom-input>
-    <app-custom-input formControlName="description" [label]="'Description'"></app-custom-input>
-    <app-custom-selector formControlName="category" [label]="'Category'" [optionList]="categories"></app-custom-selector>
+    <app-custom-input
+      formControlName="title"
+      [label]="'Title'"
+    ></app-custom-input>
+    <app-custom-input
+      formControlName="description"
+      [label]="'Description'"
+    ></app-custom-input>
+    <app-custom-selector
+      formControlName="category"
+      [label]="'Category'"
+      [optionList]="categories"
+    ></app-custom-selector>
 
     <div formArrayName="actors">
-      @for(actor of actors.controls; track actor; let i = $index){
-        <div class="flex items-end justify-between" [formGroupName]="i">
-          <div class="w-2/3">
-            <app-custom-input formControlName="actor" [label]="'Actor'" placeholder="Actor"></app-custom-input>
+      @for (actor of actors.controls; track actor; let i = $index) {
+        <div [formGroupName]="i" class="actor-item">
+          <div class="actor-input">
+            <app-custom-input
+              formControlName="actor"
+              [label]="'Actor'"
+              placeholder="Actor"
+            ></app-custom-input>
           </div>
-          <app-main-button (click)="removeActor(i)" >
-            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+          <app-main-button (click)="removeActor(i)">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="delete"
+            ></mat-icon>
           </app-main-button>
         </div>
       }
     </div>
 
-    <div class="mt-5">
-      <app-main-button class="mt-2" (click)="addActor()" >
+    <div class="form-actions">
+      <app-main-button class="add-actor" (click)="addActor()">
         <span>Add actor</span>
       </app-main-button>
 
-      @if(movieForm.controls.actors.length){
-      <div class="my-3">
-        <label id="Validate_actor" class="text-white">Validate actors</label>
-        <input class="mx-4" type="checkbox" name="Validate_actor" [value]="validateActors()" (change)="toggleActorValidation()">
-      </div>
+      @if (movieForm.controls.actors.length) {
+        <div class="validate-actors">
+          <label id="validate_actor" class="validate-label"
+            >Validate actors</label
+          >
+          <input
+            class="validate-checkbox"
+            type="checkbox"
+            name="validate_actor"
+            [value]="validateActors()"
+            (change)="toggleActorValidation()"
+          />
+        </div>
       }
     </div>
 
-    <div class="flex justify-center">
+    <div class="submit-button">
       <app-main-button [type]="'submit'" [isDisabled]="!movieForm.valid">
         <span>Send</span>
       </app-main-button>
     </div>
-    @if(movieForm.controls.title.errors?.['titleNotUnique']){
-      <div class="text-red-700 text-center mt-2 text-md">Movie with this title already exist</div>
+
+    @if (movieForm.controls.title.errors?.["titleNotUnique"]) {
+      <div class="error-message">Movie with this title already exist</div>
     }
-    </form>
+  </form>
 </div>

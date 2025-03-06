@@ -1,0 +1,55 @@
+/* movie.component.css */
+
+.form-container {
+  margin-top: 20px;
+  min-width: 300px;
+}
+
+.form-title {
+  font-size: 24px;
+  text-align: center;
+  color: white;
+}
+
+.actor-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.actor-input {
+  width: 66%;
+}
+
+.form-actions {
+  margin-top: 20px;
+}
+
+.add-actor {
+  margin-top: 10px;
+}
+
+.validate-actors {
+  margin-top: 20px;
+}
+
+.validate-label {
+  color: white;
+}
+
+.validate-checkbox {
+  margin-left: 16px;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+}

@@ -1,12 +1,11 @@
-  <button
-    [ngClass]="{
-      'bg-gray-400 hover:bg-gray-300 text-white cursor-pointer': !isDisabled(),
-      'bg-gray-600 cursor-not-allowed text-gray-800': isDisabled(),
-      'text-black': true,
-    }"
-    [disabled]="isDisabled()"
-    class="px-4 py-2 rounded focus:outline-none"
-    [type]="type()"
-  >
+<button
+  [ngClass]="{
+    'custom-button': true,
+    'custom-button-active': !isDisabled(),
+    'custom-button-disabled': isDisabled()
+  }"
+  [disabled]="isDisabled()"
+  [type]="type()"
+>
   <ng-content></ng-content>
-  </button>
+</button>

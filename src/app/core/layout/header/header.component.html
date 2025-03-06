@@ -1,15 +1,13 @@
-<header
-  class="bg-black h-16 flex justify-evenly  items-center text-white"
->
+<header>
   <div class="text-3xl" routerLink="">LOGO</div>
-  <div class="flex w-1/2 justify-between text-center items-center">
+  <div class="header-buttons">
     @for (section of headerSection; track $index) {
-      <div class="hover:text-gray-500 cursor-pointer">{{ section }}</div>
+      <div>{{ section }}</div>
     }
   </div>
   <app-custom-input [placeholder]="'Search'"></app-custom-input>
 </header>
-<div class="text-white">
+<div class="breadcrumbs">
   <xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
   <ng-template #iconTemplate> > </ng-template>
 </div>

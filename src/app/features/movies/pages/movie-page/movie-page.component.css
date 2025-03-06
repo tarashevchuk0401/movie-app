@@ -1,0 +1,26 @@
+/* movie.component.css */
+
+.movie-container {
+  background-color: #fc8181; /* Equivalent to bg-red-300 */
+  min-width: 300px;           /* Equivalent to min-w-300 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around; /* Equivalent to justify-around */
+}
+
+.movie-info {
+  margin-top: 16px; /* Space between buttons and the paragraph */
+  font-size: 16px;
+  color: #333;      /* Set color as per your design preference */
+}
+
+.movie-details {
+  margin-top: 20px; /* Space between paragraph and movie details */
+  font-size: 14px;
+  color: #666;      /* Set color as per your design preference */
+}

@@ -1,17 +1,18 @@
 import {
-  AfterContentChecked,
   ChangeDetectionStrategy,
-  Component, ElementRef,
+  ChangeDetectorRef,
+  Component,
   inject,
   OnInit,
+  signal,
 } from '@angular/core';
 import { MovieListComponent } from '../../components/movie-list/movie-list.component';
 import { RouterLink } from '@angular/router';
 import { MainButtonComponent } from '../../../../shared/components/main-button/main-button.component';
 import { MovieService } from '../../services/movie.service';
-import { MovieStore } from '../../store/movie.store';
-import {BreadcrumbService} from 'xng-breadcrumb';
-import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import { BreadcrumbService } from 'xng-breadcrumb';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Movie } from '../../interfaces/movie';
 
 @Component({
   selector: 'app-movie',
@@ -22,30 +23,33 @@ import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
     MatPaginatorModule,
   ],
   templateUrl: './movie.component.html',
-  providers: [MovieService],
   styleUrl: './movie.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieComponent implements OnInit {
-  movieStore = inject(MovieStore);
+  movieService = inject(MovieService);
   breadcrumbService = inject(BreadcrumbService);
   page = 1;
   pageSize = 10;
-  length = this.movieStore.total();
+  movieList = signal<Movie[]>([]);
+  total = signal(0)
 
   ngOnInit() {
     this.getList();
     this.breadcrumbService.set('@list', 'Movie list');
+    this.movieService.movies$.subscribe((data) => {
+      this.movieList.set(data.data);
+      this.total.set(data.total);
+    });
   }
 
-
   getList() {
-    this.movieStore.getList({ page: this.page, pageSize: this.pageSize });
+    this.movieService.getList({ page: this.page, pageSize: this.pageSize });
   }
 
   handlePageEvent(event: PageEvent) {
     this.page = event.pageIndex + 1;
     this.pageSize = event.pageSize;
-    this.movieStore.getList({ page: this.page, pageSize: this.pageSize });
+    this.movieService.getList({ page: this.page, pageSize: this.pageSize });
   }
 }

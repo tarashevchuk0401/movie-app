@@ -1,5 +1,5 @@
-<main class="bg-red-300 min-w-300 flex justify-between flex-col">
-  <div class="flex justify-around">
+<main class="movie-container">
+  <div class="button-container">
     <a [routerLink]="['/home/movie', movieId, 'company']">
       <app-main-button>
         <span>Company</span>
@@ -7,11 +7,11 @@
     </a>
     <a [routerLink]="['/home/movie', movieId, 'actor']">
       <app-main-button>
-      <span>Actor</span>
+        <span>Actor</span>
       </app-main-button>
     </a>
   </div>
-  <p>Information about movie</p>
-  <div>{{ moviesStore.movie() | json }}</div>
+  <p class="movie-info">Information about movie</p>
+  <div class="movie-details">{{ movie() | json }}</div>
   <router-outlet></router-outlet>
 </main>

@@ -1,0 +1,12 @@
+main{
+  background-color:rgb(17,24,39);
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  div{
+    max-width: 1300px;
+    min-width: 80dvw;
+  }
+}

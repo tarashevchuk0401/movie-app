@@ -7,3 +7,23 @@
 ::ng-deep xng-breadcrumb-list {
   text-align: end;
 }
+
+header{
+  background-color: black;
+  height: 4rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+}
+.header-buttons{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  width: 50%;
+}
+
+.breadcrumbs{
+  color: white;
+}

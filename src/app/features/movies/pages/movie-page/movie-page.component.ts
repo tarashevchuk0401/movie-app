@@ -2,8 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { MainButtonComponent } from '../../../../shared/components/main-button/main-button.component';
-import { MovieStore } from '../../store/movie.store';
 import { JsonPipe } from '@angular/common';
+import { MovieService } from '../../services/movie.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-movie-page',
@@ -14,12 +15,11 @@ import { JsonPipe } from '@angular/common';
 export class MoviePageComponent implements OnInit {
   breadcrumbService = inject(BreadcrumbService);
   activatedRoute = inject(ActivatedRoute);
-  moviesStore = inject(MovieStore);
-  movieId: string | null = null
+  moviesService = inject(MovieService);
+  movieId = this.activatedRoute.snapshot.paramMap.get('id');
+  movie = toSignal(this.moviesService.getItem(Number(this.movieId)));
 
   ngOnInit() {
     this.breadcrumbService.set('@movie', 'Movie');
-    this.movieId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.moviesStore.getItem(Number(this.movieId));
   }
 }

@@ -1,22 +1,21 @@
-<div
-  class="bg-black rounded-md text-white w-72 h-80 p-5 flex flex-col overflow-hidden"
->
-  <div class="flex ">
-      <div class="text-xs mx-1 bg-blue-900 p-1 rounded">{{ movie().category }}</div>
+<div class="movie-card">
+  <div class="category-badge">
+    <div class="category">{{ movie().category }}</div>
   </div>
 
-  <div class="flex flex-col justify-between flex-grow overflow-hidden">
-    <p class="text-3xl text-center m-2">{{ movie().title }}</p>
-    <p class="text-justify block text-ellipsis overflow-hidden">
+  <div class="movie-content">
+    <p class="movie-title">{{ movie().title }}</p>
+    <p class="movie-description">
       {{ movie().description.slice(0, 150) }}
     </p>
   </div>
-  <div class="flex justify-between">
-    <app-main-button (click)="deleteItem(movie().id)" >
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+
+  <div class="movie-actions">
+    <app-main-button (click)="deleteItem(movie().id)">
+      <mat-icon aria-hidden="false" aria-label="Delete icon" fontIcon="delete"></mat-icon>
     </app-main-button>
     <app-main-button [routerLink]="'/home/movie/' + movie().id">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="info"></mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Info icon" fontIcon="info"></mat-icon>
     </app-main-button>
   </div>
 </div>

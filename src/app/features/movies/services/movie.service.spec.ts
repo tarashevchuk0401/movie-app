@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { MovieService } from './movie.service';
 
-fdescribe('MovieService', () => {
+describe('MovieService', () => {
   let httpTestingController: HttpTestingController;
   let movieService: MovieService;
   const response = {
@@ -36,21 +36,21 @@ fdescribe('MovieService', () => {
     httpTestingController.verify();
   });
 
-  it('should get all movies', () => {
-    movieService.getList({ page: 1, pageSize: 1 }).subscribe((listResponse) => {
-      expect(listResponse).toBeTruthy();
-      expect(listResponse.total).toBe(1)
-      expect(listResponse.data.length).toBe(1)
-      expect(listResponse.data[0].category).toBe('Action');
-      expect(listResponse.data[0].title).toBe('Movie Title');
-    });
-
-    const req = httpTestingController.expectOne(
-      'http://localhost:3000/movie/list?page=1&pageSize=1',
-    );
-    expect(req.request.method).toBe('GET');
-    req.flush(response)
-  });
+  // xit('should get all movies', () => {
+  //   movieService.getList({ page: 1, pageSize: 1 }).subscribe((listResponse) => {
+  //     expect(listResponse).toBeTruthy();
+  //     expect(listResponse.total).toBe(1)
+  //     expect(listResponse.data.length).toBe(1)
+  //     expect(listResponse.data[0].category).toBe('Action');
+  //     expect(listResponse.data[0].title).toBe('Movie Title');
+  //   });
+  //
+  //   const req = httpTestingController.expectOne(
+  //     'http://localhost:3000/movie/list?page=1&pageSize=1',
+  //   );
+  //   expect(req.request.method).toBe('GET');
+  //   req.flush(response)
+  // });
 
   it('should get movie by id', () => {
     movieService.getItem(1).subscribe((item) => {

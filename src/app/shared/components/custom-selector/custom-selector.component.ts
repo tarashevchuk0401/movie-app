@@ -23,13 +23,13 @@ import {
   imports: [NgSelectModule, FormsModule],
   templateUrl: './custom-selector.component.html',
   styleUrl: './custom-selector.component.css',
-  // providers: [
-  //   {
-  //     provide: NG_VALUE_ACCESSOR,
-  //     useExisting: forwardRef(() => CustomSelectorComponent),
-  //     multi: true,
-  //   },
-  // ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CustomSelectorComponent),
+      multi: true,
+    },
+  ],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -42,11 +42,11 @@ export class CustomSelectorComponent
   value = '';
   cdr = inject(ChangeDetectorRef);
 
-  constructor(@Self() @Optional() public controlDir: NgControl) {
-    if (this.controlDir) {
-      this.controlDir.valueAccessor = this;
-    }
-  }
+  // constructor(@Self() @Optional() public controlDir: NgControl) {
+  //   if (this.controlDir) {
+  //     this.controlDir.valueAccessor = this;
+  //   }
+  // }
 
   ngAfterViewInit() {
     if (this.optionList.length) {

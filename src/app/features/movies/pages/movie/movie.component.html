@@ -4,17 +4,16 @@
       <app-main-button ><span>Add new movie</span></app-main-button>
     </div>
   </a>
-  <mat-paginator [length]="movieStore.total()"
+  <mat-paginator [length]="total()"
                  [pageSize]="pageSize"
                  [pageSizeOptions]="[5, 10, 15]"
                  (page)="handlePageEvent($event)"
                  aria-label="Select page">
   </mat-paginator>
 
-  @if(movieStore.movieList().length){
-    <app-movie-list [movieList]="movieStore.movieList()"></app-movie-list>
+  @if(movieList().length){
+    <app-movie-list [movieList]="movieList()"></app-movie-list>
   } @else {
     <div style="color: red">No Movies...</div>
   }
-
 </main>
