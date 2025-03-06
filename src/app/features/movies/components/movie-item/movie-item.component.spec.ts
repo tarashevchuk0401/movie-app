@@ -12,7 +12,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Movie } from '../../interfaces/movie';
 import { By } from '@angular/platform-browser';
 import {MovieService} from '../../services/movie.service';
-import {of} from 'rxjs';
+import {of} from 'rxjs';''
 
 fdescribe('MovieItemComponent', () => {
   let component: MovieItemComponent;
@@ -50,7 +50,7 @@ fdescribe('MovieItemComponent', () => {
     const title = fixture.debugElement.query(By.css('.movie-title'));
     expect(title.nativeElement.textContent).toContain('string');
   });
-  
+
   // it('should delete', fakeAsync(() => {
   //   const deleteButton = fixture.debugElement.query(By.css('.delete-button'));
   //   deleteButton.nativeElement.click();
