@@ -25,7 +25,7 @@
               placeholder="Actor"
             ></app-custom-input>
           </div>
-          <app-main-button (click)="removeActor(i)">
+          <app-main-button class="remove-actor" (click)="removeActor(i)">
             <mat-icon
               aria-hidden="false"
               aria-label="Example home icon"
@@ -58,7 +58,7 @@
     </div>
 
     <div class="submit-button">
-      <app-main-button [type]="'submit'" [isDisabled]="!movieForm.valid">
+      <app-main-button class="submit" [type]="'submit'" [isDisabled]="!movieForm.valid">
         <span>Send</span>
       </app-main-button>
     </div>

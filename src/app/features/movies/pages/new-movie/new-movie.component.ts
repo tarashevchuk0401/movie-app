@@ -71,7 +71,6 @@ export class NewMovieComponent implements OnInit {
   }
 
   newActor(): FormGroup {
-    console.log(this.movieForm.controls);
     return this.formBuilder.group({
       actor: [''],
     });

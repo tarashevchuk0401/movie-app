@@ -11,7 +11,7 @@
   </div>
 
   <div class="movie-actions">
-    <app-main-button (click)="deleteItem(movie().id)">
+    <app-main-button class="delete-button" (click)="deleteItem(movie().id)">
       <mat-icon aria-hidden="false" aria-label="Delete icon" fontIcon="delete"></mat-icon>
     </app-main-button>
     <app-main-button [routerLink]="'/home/movie/' + movie().id">

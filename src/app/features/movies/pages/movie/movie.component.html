@@ -14,6 +14,6 @@
   @if(movieList().length){
     <app-movie-list [movieList]="movieList()"></app-movie-list>
   } @else {
-    <div style="color: red">No Movies...</div>
+    <div class="empty" style="color: red">No Movies...</div>
   }
 </main>
