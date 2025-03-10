@@ -8,7 +8,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-movie-page',
-  imports: [RouterLink, RouterOutlet, MainButtonComponent, JsonPipe],
+  imports: [RouterLink, RouterOutlet, MainButtonComponent],
   templateUrl: './movie-page.component.html',
   styleUrl: './movie-page.component.css',
 })

@@ -26,6 +26,7 @@ export class CustomInputComponent implements ControlValueAccessor {
   value = '';
   label = input<string>('');
   placeholder = input<string>('');
+  type = input<'text' | 'textarea'>('text');
   cdr = inject(ChangeDetectorRef);
 
   onChange = (value: string) => {};
@@ -45,7 +46,8 @@ export class CustomInputComponent implements ControlValueAccessor {
   }
 
   onInputChange(event: Event) {
-    const newValue = (event.target as HTMLInputElement).value;
+    const target = event.target as HTMLInputElement | HTMLTextAreaElement;
+    const newValue = target.value;
     this.value = newValue;
     this.onChange(newValue);
     this.onTouched();

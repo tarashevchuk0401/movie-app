@@ -1,17 +1,45 @@
 <main class="movie-container">
-  <div class="button-container">
-    <a [routerLink]="['/home/movie', movieId, 'company']">
-      <app-main-button>
-        <span>Company</span>
-      </app-main-button>
-    </a>
-    <a [routerLink]="['/home/movie', movieId, 'actor']">
-      <app-main-button>
-        <span>Actor</span>
-      </app-main-button>
-    </a>
+  <div class="movie-header">
+    <div class="movie-title-section">
+      <h1 class="movie-title">{{ movie()?.title }}</h1>
+      <div class="movie-meta">
+        <span class="year">{{ movie()?.year }}</span>
+        <span class="rating">Rating: {{ movie()?.rating }}/10</span>
+        <span class="category">{{ movie()?.category }}</span>
+      </div>
+    </div>
   </div>
-  <p class="movie-info">Information about movie</p>
-  <div class="movie-details">{{ movie() | json }}</div>
+
+  <div class="movie-content">
+    <div class="movie-main">
+      <div class="movie-description">
+        <h2>Description</h2>
+        <p>{{ movie()?.description }}</p>
+      </div>
+
+      <div class="movie-actors" *ngIf="movie()?.actors && movie()?.actors.length > 0">
+        <h2>Cast</h2>
+        <div class="actors-grid">
+          <span class="actor-tag" *ngFor="let actor of movie()?.actors">{{ actor }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="movie-actions">
+      <div class="action-buttons">
+        <a [routerLink]="['/home/movie', movieId, 'company']">
+          <app-main-button>
+            <span>Company</span>
+          </app-main-button>
+        </a>
+        <a [routerLink]="['/home/movie', movieId, 'actor']">
+          <app-main-button>
+            <span>Actor</span>
+          </app-main-button>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <router-outlet></router-outlet>
 </main>

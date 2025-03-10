@@ -4,15 +4,75 @@
   </div>
 
   <div class="movie-content">
-    <p class="movie-title">{{ movie().title }}</p>
-    <p class="movie-description">
-      {{ movie().description.slice(0, 150) }}
-    </p>
+    <div *ngIf="!isEditing" class="movie-display">
+      <div class="movie-header">
+        <h3 class="movie-title">{{ movie().title }}</h3>
+        <div class="movie-meta">
+          <span class="year">{{ movie().year }}</span>
+          <span class="rating">{{ movie().rating }}/10</span>
+        </div>
+      </div>
+      <p class="movie-description">
+        {{ movie().description.slice(0, 150) }}
+      </p>
+      <div class="actors-list" *ngIf="movie().actors ">
+        <span class="actor-tag" *ngFor="let actor of movie().actors">{{ actor }}</span>
+      </div>
+    </div>
+
+    <form *ngIf="isEditing" [formGroup]="movieForm" class="movie-edit">
+      <app-custom-input
+        label="Title"
+        placeholder="Enter movie title"
+        formControlName="title">
+      </app-custom-input>
+
+        <app-custom-input
+          label="Year"
+          placeholder="Enter year"
+          formControlName="year">
+        </app-custom-input>
+
+        <app-custom-input
+          label="Rating"
+          placeholder="Enter rating (0-10)"
+          formControlName="rating">
+        </app-custom-input>
+
+      <app-custom-input
+        label="Description"
+        placeholder="Enter movie description"
+        formControlName="description">
+      </app-custom-input>
+
+      <app-custom-input
+        label="Actors"
+        placeholder="Enter actors (comma-separated)"
+        formControlName="actors">
+      </app-custom-input>
+
+      <div class="form-errors" *ngIf="movieForm.invalid && movieForm.touched">
+        <p *ngIf="formControls['title'].errors?.['required']">Title is required</p>
+        <p *ngIf="formControls['title'].errors?.['minlength']">Title must be at least 2 characters</p>
+        <p *ngIf="formControls['description'].errors?.['required']">Description is required</p>
+        <p *ngIf="formControls['description'].errors?.['minlength']">Description must be at least 10 characters</p>
+        <p *ngIf="formControls['year'].errors?.['required']">Year is required</p>
+        <p *ngIf="formControls['year'].errors?.['min'] || formControls['year'].errors?.['max']">Year must be between 1900 and current year</p>
+        <p *ngIf="formControls['rating'].errors?.['required']">Rating is required</p>
+        <p *ngIf="formControls['rating'].errors?.['min'] || formControls['rating'].errors?.['max']">Rating must be between 0 and 10</p>
+      </div>
+    </form>
   </div>
 
   <div class="movie-actions">
     <app-main-button class="delete-button" (click)="deleteItem(movie().id)">
       <mat-icon aria-hidden="false" aria-label="Delete icon" fontIcon="delete"></mat-icon>
+    </app-main-button>
+    <app-main-button *ngIf="!isEditing" (click)="startEditing()">
+      <mat-icon aria-hidden="false" aria-label="Edit icon" fontIcon="edit"></mat-icon>
+    </app-main-button>
+    <app-main-button *ngIf="isEditing" (click)="saveChanges()" [isDisabled]="movieForm.invalid">
+      <mat-icon aria-hidden="false" aria-label="Save icon" fontIcon="save"></mat-icon>
     </app-main-button>
     <app-main-button [routerLink]="'/home/movie/' + movie().id">
       <mat-icon aria-hidden="false" aria-label="Info icon" fontIcon="info"></mat-icon>

@@ -3,7 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   DestroyRef,
-  inject, model,
+  inject, model, OnDestroy,
   OnInit,
 } from '@angular/core';
 import {
@@ -69,6 +69,7 @@ export class NewMovieComponent implements OnInit {
   ngOnInit() {
     this.breadcrumbService.set('@new-movie', 'Add new movie')
   }
+
 
   newActor(): FormGroup {
     return this.formBuilder.group({

@@ -1,10 +1,19 @@
 <div class="input-container">
   <label class="input-label">{{ label() }}</label>
-  <input
-    type="text"
-    [value]="value"
-    [placeholder]="placeholder()"
-    (input)="onInputChange($event)"
-    class="input-field"
-  />
+  @if (type() === 'textarea') {
+    <textarea
+      [value]="value"
+      [placeholder]="placeholder()"
+      (input)="onInputChange($event)"
+      class="input-field textarea-field"
+    ></textarea>
+  } @else {
+    <input
+      type="text"
+      [value]="value"
+      [placeholder]="placeholder()"
+      (input)="onInputChange($event)"
+      class="input-field"
+    />
+  }
 </div>

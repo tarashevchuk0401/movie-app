@@ -1,26 +1,110 @@
 /* movie.component.css */
 
 .movie-container {
-  background-color: #fc8181; /* Equivalent to bg-red-300 */
-  min-width: 300px;           /* Equivalent to min-w-300 */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: white;
+}
+
+.movie-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.movie-title-section {
+  text-align: center;
+}
+
+.movie-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.movie-meta {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  color: #a0aec0;
+}
+
+.movie-meta span {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.movie-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.movie-main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 2rem;
 }
 
-.button-container {
+.movie-description h2,
+.movie-actors h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.movie-description p {
+  line-height: 1.6;
+  color: #cbd5e0;
+  font-size: 1.1rem;
+}
+
+.actors-grid {
   display: flex;
-  justify-content: space-around; /* Equivalent to justify-around */
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-.movie-info {
-  margin-top: 16px; /* Space between buttons and the paragraph */
-  font-size: 16px;
-  color: #333;      /* Set color as per your design preference */
+.actor-tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: #cbd5e0;
 }
 
-.movie-details {
-  margin-top: 20px; /* Space between paragraph and movie details */
-  font-size: 14px;
-  color: #666;      /* Set color as per your design preference */
+.movie-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .movie-container {
+    padding: 1rem;
+  }
+
+  .movie-title {
+    font-size: 2rem;
+  }
+
+  .movie-meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .movie-meta span {
+    width: 100%;
+    text-align: center;
+  }
 }

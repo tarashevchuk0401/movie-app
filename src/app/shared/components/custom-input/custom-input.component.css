@@ -6,6 +6,7 @@
 
 .input-label {
   color: white;
+  margin-bottom: 0.5rem;
 }
 
 .input-field {
@@ -17,7 +18,13 @@
   color: black;
 }
 
+.textarea-field {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
 .input-field:focus {
   border: none;
-  ring: 0;
 }

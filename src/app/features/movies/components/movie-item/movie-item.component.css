@@ -1,50 +1,185 @@
-/* movie-card.component.css */
+/* movie-item.component.css */
 
 .movie-card {
-  background-color: black;
-  border-radius: 8px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
   color: white;
   width: 18rem;
   height: 20rem;
-  padding: 1.25rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  gap: 0.2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .category-badge {
   display: flex;
+  justify-content: flex-start;
 }
 
 .category {
   font-size: 0.75rem;
-  margin: 0.25rem;
-  background-color: #1e3a8a; /* dark blue background */
-  padding: 0.25rem;
-  border-radius: 0.375rem;
+  background-color: #3b82f6;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  color: white;
+  font-weight: 500;
 }
 
 .movie-content {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
+  gap: 0.75rem;
   overflow: hidden;
+}
+
+.movie-display, .movie-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+/* Custom scrollbar styling */
+.movie-display::-webkit-scrollbar,
+.movie-edit::-webkit-scrollbar {
+  width: 8px;
+}
+
+.movie-display::-webkit-scrollbar-track,
+.movie-edit::-webkit-scrollbar-track {
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+}
+
+.movie-display::-webkit-scrollbar-thumb,
+.movie-edit::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 4px;
+  border: 2px solid rgba(59, 130, 246, 0.1);
+}
+
+.movie-display::-webkit-scrollbar-thumb:hover,
+.movie-edit::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* For Firefox */
+.movie-display,
+.movie-edit {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 rgba(59, 130, 246, 0.1);
+}
+
+.movie-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .movie-title {
-  font-size: 1.875rem; /* 3xl */
-  text-align: center;
-  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.movie-meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+.year, .rating {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
 }
 
 .movie-description {
-  text-align: justify;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #d1d5db;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+.actors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.actor-tag {
+  font-size: 0.75rem;
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.movie-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.edit-row {
+  display: flex;
+  gap: 0.75rem;
 }
 
 .movie-actions {
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-errors {
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.form-errors p {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin: 0.25rem 0;
+}
+
+@media (max-width: 640px) {
+  .movie-card {
+    width: 100%;
+    height: auto;
+    min-height: 20rem;
+  }
+
+  .movie-meta {
+    flex-direction: column;
+  }
+
+  .edit-row {
+    flex-direction: column;
+  }
 }
