@@ -68,7 +68,7 @@
     <app-main-button class="delete-button" (click)="deleteItem(movie().id)">
       <mat-icon aria-hidden="false" aria-label="Delete icon" fontIcon="delete"></mat-icon>
     </app-main-button>
-    <app-main-button *ngIf="!isEditing" (click)="startEditing()">
+    <app-main-button class="edit-button" *ngIf="!isEditing" (click)="startEditing()">
       <mat-icon aria-hidden="false" aria-label="Edit icon" fontIcon="edit"></mat-icon>
     </app-main-button>
     <app-main-button *ngIf="isEditing" (click)="saveChanges()" [isDisabled]="movieForm.invalid">
