@@ -16,6 +16,7 @@
       [optionList]="categories"
     ></app-custom-selector>
 
+
     <div formArrayName="actors">
       @for (actor of actors.controls; track actor; let i = $index) {
         <div [formGroupName]="i" class="actor-item">
@@ -47,13 +48,12 @@
           <label id="validate_actor" class="validate-label"
             >Validate actors</label
           >
-          <input
-            class="validate-checkbox"
-            type="checkbox"
-            name="validate_actor"
-            [value]="validateActors()"
-            (change)="toggleActorValidation()"
-          />
+          <app-checkbox
+            [checked]="validateActors()"
+            (change)="toggleActorValidation()"  
+          ></app-checkbox>
+          {{validateActors()}}
+    
         </div>
       }
     </div>

@@ -24,6 +24,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UniqueTitleValidator } from '../../../../core/validators/unique-title.validator';
 import {BreadcrumbService} from 'xng-breadcrumb';
 import {MatIcon} from '@angular/material/icon';
+import { CheckboxComponent } from '../../../../shared/components/checkbox/checkbox.component';
 
 @Component({
   selector: 'app-new-movie',
@@ -33,7 +34,8 @@ import {MatIcon} from '@angular/material/icon';
     ReactiveFormsModule,
     MainButtonComponent,
     CustomSelectorComponent,
-    MatIcon
+    MatIcon,
+    CheckboxComponent,
   ],
   templateUrl: './new-movie.component.html',
   styleUrl: './new-movie.component.css',
