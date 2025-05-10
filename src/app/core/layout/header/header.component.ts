@@ -11,10 +11,17 @@ import { BreadcrumbComponent } from 'xng-breadcrumb';
 import { GetMeResponse } from '../../dto/auth/responses/get-me-response.dto';
 import { AuthService } from '../../services/auth.service';
 import { MatIcon } from '@angular/material/icon';
+import {MainButtonComponent} from '../../../shared/components/main-button/main-button.component';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, CustomInputComponent, BreadcrumbComponent, MatIcon],
+  imports: [
+    RouterLink,
+    CustomInputComponent,
+    BreadcrumbComponent,
+    MatIcon,
+    MainButtonComponent,
+  ],
   templateUrl: './header.component.html',
   standalone: true,
   styleUrl: './header.component.css',

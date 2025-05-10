@@ -1,6 +1,8 @@
 <header>
-  <div class="text-3xl logo" routerLink="">LOGO</div>
-  <div class="avatar">{{ user()!.firstName }} {{ user()!.firstName }}</div>
+  <app-main-button routerLink="/">Home</app-main-button>
+  <app-main-button routerLink="/sign-in">Log In</app-main-button>
+  <app-main-button routerLink="/sign-up">Sign Up</app-main-button>
+  <div class="avatar">{{ user()!.firstName }} {{ user()!.lastName }}</div>
   <app-custom-input [placeholder]="'Search'"></app-custom-input>
 </header>
 <div class="breadcrumbs">
