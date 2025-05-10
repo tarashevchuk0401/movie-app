@@ -11,8 +11,9 @@ import { provideRouter } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Movie } from '../../interfaces/movie';
 import { By } from '@angular/platform-browser';
-import {MovieService} from '../../services/movie.service';
-import {of} from 'rxjs';''
+import { MovieService } from '../../services/movie.service';
+import { of } from 'rxjs';
+('');
 
 fdescribe('MovieItemComponent', () => {
   let component: MovieItemComponent;

@@ -1,4 +1,9 @@
-import {ChangeDetectionStrategy, Component, input, ViewEncapsulation} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -11,5 +16,5 @@ import { NgClass } from '@angular/common';
 export class MainButtonComponent {
   text = input<string>('');
   isDisabled = input<boolean>(false);
-  type = input('button')
+  type = input('button');
 }

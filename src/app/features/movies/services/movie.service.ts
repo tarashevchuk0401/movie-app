@@ -38,19 +38,26 @@ export class MovieService extends ApiService {
   createMovie(movie: Omit<Movie, 'id'>): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>(`${this.baseUrl}/movie/item`, movie);
   }
-  
-  updateMovie(id: number, movie: Omit<Movie, 'id'>): Observable<SuccessResponse> {
-    return this.http.put<SuccessResponse>(`${this.baseUrl}/movie/item/${id}`, movie).pipe(
-      first(),
-      tap(() => {
-        const currentMovies = this.listResponse.getValue().data;
-        const updatedMovies = currentMovies.map(m => m.id === id ? { ...movie, id } : m);
-        this.listResponse.next({
-          data: updatedMovies,
-          total: updatedMovies.length
-        });
-      })
-    );
+
+  updateMovie(
+    id: number,
+    movie: Omit<Movie, 'id'>,
+  ): Observable<SuccessResponse> {
+    return this.http
+      .put<SuccessResponse>(`${this.baseUrl}/movie/item/${id}`, movie)
+      .pipe(
+        first(),
+        tap(() => {
+          const currentMovies = this.listResponse.getValue().data;
+          const updatedMovies = currentMovies.map((m) =>
+            m.id === id ? { ...movie, id } : m,
+          );
+          this.listResponse.next({
+            data: updatedMovies,
+            total: updatedMovies.length,
+          });
+        }),
+      );
   }
 
   deleteMovie(id: number): Observable<SuccessResponse> {

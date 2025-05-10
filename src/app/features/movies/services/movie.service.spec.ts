@@ -55,15 +55,15 @@ describe('MovieService', () => {
   it('should get movie by id', () => {
     movieService.getItem(1).subscribe((item) => {
       expect(item).toBeTruthy();
-      expect(item.id).toBe(1)
-    })
+      expect(item.id).toBe(1);
+    });
 
     const req = httpTestingController.expectOne(
       'http://localhost:3000/movie/item/1',
     );
     expect(req.request.method).toBe('GET');
-    req.flush(response.data[0])
-  })
+    req.flush(response.data[0]);
+  });
 
   it('should create a new movie', () => {
     const newMovie = {
@@ -78,10 +78,11 @@ describe('MovieService', () => {
       expect(res.id).toBe(11);
     });
 
-    const req = httpTestingController.expectOne('http://localhost:3000/movie/item');
+    const req = httpTestingController.expectOne(
+      'http://localhost:3000/movie/item',
+    );
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(newMovie);
-    req.flush({id: 11});
+    req.flush({ id: 11 });
   });
-
 });

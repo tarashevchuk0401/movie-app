@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CompanyPageComponent } from './company-page.component';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {provideRouter} from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideRouter } from '@angular/router';
 
 describe('CompanyPageComponent', () => {
   let component: CompanyPageComponent;
@@ -11,11 +11,8 @@ describe('CompanyPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CompanyPageComponent, HttpClientTestingModule],
-      providers: [
-        provideRouter([]),
-      ],
-    })
-    .compileComponents();
+      providers: [provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CompanyPageComponent);
     component = fixture.componentInstance;

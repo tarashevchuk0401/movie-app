@@ -32,7 +32,7 @@ export class MovieComponent implements OnInit {
   page = 1;
   pageSize = 10;
   movieList = signal<Movie[]>([]);
-  total = signal(0)
+  total = signal(0);
 
   ngOnInit() {
     this.getList();

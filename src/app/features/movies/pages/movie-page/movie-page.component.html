@@ -3,7 +3,6 @@
     <div class="movie-title-section">
       <h1 class="movie-title">{{ movie()?.title }}</h1>
       <div class="movie-meta">
-        
         <span class="year">{{ movie()?.year }}</span>
         <span class="rating">Rating: {{ movie()?.rating }}/10</span>
         <span class="category">{{ movie()?.category }}</span>
@@ -18,10 +17,15 @@
         <p>{{ movie()?.description }}</p>
       </div>
 
-      <div class="movie-actors" *ngIf="movie()?.actors && movie()?.actors.length > 0">
+      <div
+        class="movie-actors"
+        *ngIf="movie()?.actors && movie()?.actors.length > 0"
+      >
         <h2>Cast</h2>
         <div class="actors-grid">
-          <span class="actor-tag" *ngFor="let actor of movie()?.actors">{{ actor }}</span>
+          @for (actor of movie()?.actors; track $index) {
+            <span>{{ actor }}</span>
+          }
         </div>
       </div>
     </div>

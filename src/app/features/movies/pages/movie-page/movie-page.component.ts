@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { MainButtonComponent } from '../../../../shared/components/main-button/main-button.component';
-import { JsonPipe } from '@angular/common';
 import { MovieService } from '../../services/movie.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 

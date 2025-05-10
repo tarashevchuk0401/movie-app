@@ -1,4 +1,4 @@
-export interface ListResponse<T>{
-  data: T[],
-  total: number,
+export interface ListResponse<T> {
+  data: T[];
+  total: number;
 }

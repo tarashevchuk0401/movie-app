@@ -1,0 +1,23 @@
+<h2>Sign In</h2>
+<form [formGroup]="signInForm">
+  <div>
+    <app-custom-input
+      label="Email"
+      placeholder="Enter your email"
+      formControlName="email"
+    ></app-custom-input>
+  </div>
+
+  <app-custom-input
+    label="Password"
+    placeholder="Enter your password"
+    formControlName="password"
+  ></app-custom-input>
+
+  <div class="action">
+    <app-main-button (click)="onSubmit()"><span>Sign in</span></app-main-button>
+    <app-main-button routerLink="/sign-up"
+      ><span>Go to Sign Up</span></app-main-button
+    >
+  </div>
+</form>

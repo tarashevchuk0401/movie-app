@@ -9,7 +9,7 @@ describe('CustomSelectorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, CustomSelectorComponent],
-      declarations: []
+      declarations: [],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CustomSelectorComponent);

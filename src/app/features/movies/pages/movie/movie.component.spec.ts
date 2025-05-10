@@ -6,9 +6,9 @@ import { BreadcrumbService } from 'xng-breadcrumb';
 import { DebugElement } from '@angular/core';
 import { routes } from '../../../../app.routes';
 import { RouterTestingModule } from '@angular/router/testing';
-import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
-import {of} from 'rxjs';
-import {By} from '@angular/platform-browser';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { of } from 'rxjs';
+import { By } from '@angular/platform-browser';
 
 describe('MovieComponent', () => {
   let fixture: ComponentFixture<MovieComponent>;
@@ -87,24 +87,24 @@ describe('MovieComponent', () => {
     expect(component.movieList().length).toBe(0);
     expect(component.total()).toBe(7);
 
-    const emptyMessage = el.queryAll(By.css('.empty'))
-    expect(emptyMessage.length).toBe(1)
-  })
+    const emptyMessage = el.queryAll(By.css('.empty'));
+    expect(emptyMessage.length).toBe(1);
+  });
 
   it('should render 1 movie', () => {
-    movieServiceSpy.movies$.subscribe()
+    movieServiceSpy.movies$.subscribe();
 
     fixture.detectChanges();
 
     expect(component.movieList().length).toBe(1);
     expect(component.total()).toBe(1);
-  })
+  });
 
   it('should get list', () => {
-    spyOn(component, 'getList')
+    spyOn(component, 'getList');
     fixture.detectChanges();
-    expect(component.getList).toHaveBeenCalled()
-  })
+    expect(component.getList).toHaveBeenCalled();
+  });
 
   it('should update pagination when handlePageEvent is triggered', () => {
     spyOn(component, 'getList');
@@ -117,5 +117,4 @@ describe('MovieComponent', () => {
     expect(component.pageSize).toBe(5);
     expect(component.getList).toHaveBeenCalled();
   });
-
 });

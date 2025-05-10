@@ -1,3 +1,3 @@
 export interface SuccessResponse {
-  id: number
+  id: number;
 }

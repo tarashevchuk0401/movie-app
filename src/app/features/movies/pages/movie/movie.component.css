@@ -1,5 +1,5 @@
-mat-paginator{
-  background-color:rgb(17,24,39);
+mat-paginator {
+  background-color: rgb(17, 24, 39);
   color: white;
   font-size: 1.2rem;
 }
@@ -8,4 +8,3 @@ mat-paginator{
   color: white !important;
   font-size: 1.2rem;
 }
-

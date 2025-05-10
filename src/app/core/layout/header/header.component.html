@@ -1,10 +1,6 @@
 <header>
   <div class="text-3xl logo" routerLink="">LOGO</div>
-  <div class="header-buttons">
-    @for (section of headerSection; track $index) {
-      <div>{{ section }}</div>
-    }
-  </div>
+  <div class="avatar">{{ user()!.firstName }} {{ user()!.firstName }}</div>
   <app-custom-input [placeholder]="'Search'"></app-custom-input>
 </header>
 <div class="breadcrumbs">

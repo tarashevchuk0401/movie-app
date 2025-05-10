@@ -27,6 +27,7 @@
     "@ng-select/ng-select": "^14.2.2",
     "@ngrx/signals": "^19.0.1",
     "rxjs": "~7.8.0",
+    "socket.io-client": "^4.8.1",
     "tslib": "^2.3.0",
     "xng-breadcrumb": "^13.0.0",
     "zone.js": "~0.15.0"
@@ -39,6 +40,7 @@
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "19.1.0",
     "autoprefixer": "^10.4.20",
+    "cypress": "latest",
     "eslint": "^9.20.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
@@ -52,7 +54,6 @@
     "prettier": "^3.5.1",
     "prettier-eslint": "^16.3.0",
     "typescript": "~5.7.2",
-    "typescript-eslint": "8.23.0",
-    "cypress": "latest"
+    "typescript-eslint": "8.23.0"
   }
 }

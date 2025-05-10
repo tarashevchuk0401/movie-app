@@ -1,0 +1,33 @@
+<h2>Sign Up</h2>
+<form [formGroup]="signUpForm">
+  <app-custom-input
+    label="Email"
+    placeholder="Enter your email"
+    formControlName="email"
+  ></app-custom-input>
+
+  <app-custom-input
+    label="First name"
+    placeholder="Enter your first name"
+    formControlName="firstName"
+  ></app-custom-input>
+
+  <app-custom-input
+    label="Last name"
+    placeholder="Enter your last name"
+    formControlName="lastName"
+  ></app-custom-input>
+
+  <app-custom-input
+    label="Password"
+    placeholder="Enter your password"
+    formControlName="password"
+  ></app-custom-input>
+
+  <div class="action">
+    <app-main-button (click)="onSubmit()"><span>Sign Up</span></app-main-button>
+    <app-main-button routerLink="/sign-in"
+      ><span>Go to Sign In</span></app-main-button
+    >
+  </div>
+</form>

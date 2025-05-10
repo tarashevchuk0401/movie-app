@@ -16,7 +16,6 @@
       [optionList]="categories"
     ></app-custom-selector>
 
-
     <div formArrayName="actors">
       @for (actor of actors.controls; track actor; let i = $index) {
         <div [formGroupName]="i" class="actor-item">
@@ -50,16 +49,19 @@
           >
           <app-checkbox
             [checked]="validateActors()"
-            (change)="toggleActorValidation()"  
+            (change)="toggleActorValidation()"
           ></app-checkbox>
-          {{validateActors()}}
-    
+          {{ validateActors() }}
         </div>
       }
     </div>
 
     <div class="submit-button">
-      <app-main-button class="submit" [type]="'submit'" [isDisabled]="!movieForm.valid">
+      <app-main-button
+        class="submit"
+        [type]="'submit'"
+        [isDisabled]="!movieForm.valid"
+      >
         <span>Send</span>
       </app-main-button>
     </div>

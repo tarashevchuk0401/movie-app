@@ -43,5 +43,5 @@ Thumbs.db
 
 
 # Environment and Secrets
-src/environments/environment.development.ts
+src/environments/environment.ts
 src/environments/environment.ts

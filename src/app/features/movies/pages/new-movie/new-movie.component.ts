@@ -3,7 +3,9 @@ import {
   ChangeDetectorRef,
   Component,
   DestroyRef,
-  inject, model, OnDestroy,
+  inject,
+  model,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
 import {
@@ -22,8 +24,8 @@ import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../interfaces/movie';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UniqueTitleValidator } from '../../../../core/validators/unique-title.validator';
-import {BreadcrumbService} from 'xng-breadcrumb';
-import {MatIcon} from '@angular/material/icon';
+import { BreadcrumbService } from 'xng-breadcrumb';
+import { MatIcon } from '@angular/material/icon';
 import { CheckboxComponent } from '../../../../shared/components/checkbox/checkbox.component';
 
 @Component({
@@ -47,10 +49,9 @@ export class NewMovieComponent implements OnInit {
   cdr = inject(ChangeDetectorRef);
   destroyRef = inject(DestroyRef);
   uniqueTitleValidator = inject(UniqueTitleValidator);
-  breadcrumbService = inject(BreadcrumbService)
+  breadcrumbService = inject(BreadcrumbService);
   validateActors = model(false);
   categories = Categories;
-
 
   movieForm = this.formBuilder.nonNullable.group({
     title: this.formBuilder.nonNullable.control('Star wars', {
@@ -69,9 +70,8 @@ export class NewMovieComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.breadcrumbService.set('@new-movie', 'Add new movie')
+    this.breadcrumbService.set('@new-movie', 'Add new movie');
   }
-
 
   newActor(): FormGroup {
     return this.formBuilder.group({

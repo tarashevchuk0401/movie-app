@@ -1,4 +1,3 @@
-
 .wrapper {
   display: flex;
   justify-content: flex-start;
@@ -13,12 +12,11 @@
 
   input[type="checkbox"]:checked + label::before {
     content: "\2713";
-    background-color: #1C75BC;
+    background-color: #1c75bc;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
- 
   }
 
   label {

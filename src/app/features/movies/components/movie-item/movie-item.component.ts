@@ -1,22 +1,27 @@
-import {Component, inject, input, OnInit} from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { Movie } from '../../interfaces/movie';
 import { MainButtonComponent } from '../../../../shared/components/main-button/main-button.component';
-import {MovieService} from '../../services/movie.service';
-import {RouterLink} from '@angular/router';
-import {MatIcon} from '@angular/material/icon';
-import {CommonModule} from '@angular/common';
-import {CustomInputComponent} from '../../../../shared/components/custom-input/custom-input.component';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { MovieService } from '../../services/movie.service';
+import { RouterLink } from '@angular/router';
+import { MatIcon } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { CustomInputComponent } from '../../../../shared/components/custom-input/custom-input.component';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-movie-item',
   imports: [
-    MainButtonComponent, 
-    RouterLink, 
-    MatIcon, 
-    CommonModule, 
+    MainButtonComponent,
+    RouterLink,
+    MatIcon,
+    CommonModule,
     CustomInputComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './movie-item.component.html',
   styleUrl: './movie-item.component.css',
@@ -25,7 +30,7 @@ export class MovieItemComponent implements OnInit {
   movie = input.required<Movie>();
   movieService = inject(MovieService);
   fb = inject(FormBuilder);
-  
+
   isEditing = false;
   movieForm: FormGroup;
 
@@ -33,22 +38,32 @@ export class MovieItemComponent implements OnInit {
     this.movieForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(2)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      year: [null, [Validators.required, Validators.min(1900), Validators.max(new Date().getFullYear())]],
-      rating: [null, [Validators.required, Validators.min(0), Validators.max(10)]],
+      year: [
+        null,
+        [
+          Validators.required,
+          Validators.min(1900),
+          Validators.max(new Date().getFullYear()),
+        ],
+      ],
+      rating: [
+        null,
+        [Validators.required, Validators.min(0), Validators.max(10)],
+      ],
       actors: [''],
-      category: ['']
+      category: [''],
     });
   }
 
   ngOnInit() {
     // Set initial form values
     this.movieForm.patchValue({
-      category: this.movie().category
+      category: this.movie().category,
     });
   }
 
   deleteItem(id: number) {
-    this.movieService.deleteMovie(id).subscribe()
+    this.movieService.deleteMovie(id).subscribe();
   }
 
   startEditing() {
@@ -58,7 +73,7 @@ export class MovieItemComponent implements OnInit {
       year: this.movie().year,
       rating: this.movie().rating,
       actors: this.movie().actors?.join(', ') || '',
-      category: this.movie().category
+      category: this.movie().category,
     });
     this.isEditing = true;
   }
@@ -72,16 +87,19 @@ export class MovieItemComponent implements OnInit {
         category: formValue.category,
         year: formValue.year,
         rating: formValue.rating,
-        actors: formValue.actors.split(',').map((actor: string) => actor.trim()).filter((actor: string) => actor.length > 0)
+        actors: formValue.actors
+          .split(',')
+          .map((actor: string) => actor.trim())
+          .filter((actor: string) => actor.length > 0),
       };
-      
+
       this.updateItem(this.movie().id, updatedMovie);
       this.isEditing = false;
     }
   }
 
   updateItem(id: number, movie: Omit<Movie, 'id'>) {
-    this.movieService.updateMovie(id, movie).subscribe()
+    this.movieService.updateMovie(id, movie).subscribe();
   }
 
   get formControls() {

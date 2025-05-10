@@ -1,29 +1,26 @@
-  .select-container{
-    margin-top: 0.75rem;
+.select-container {
+  margin-top: 0.75rem;
 
-    label{
-      color: white;
-    }
-
-    .ng-select.custom {
-      border: 0px;
-      background-color: #e2e8f0;
-      border-radius: 0.375rem;
-      min-height: 40px;
-
-      ng-dropdown-panel {
-        background-color: #e2e8f0;
-        padding: 8px;
-      }
-
-      .ng-input {
-        padding: 8px;
-      }
-      .ng-value {
-        padding: 8px;
-      }
-    }
-
+  label {
+    color: white;
   }
 
+  .ng-select.custom {
+    border: 0px;
+    background-color: #e2e8f0;
+    border-radius: 0.375rem;
+    min-height: 40px;
 
+    ng-dropdown-panel {
+      background-color: #e2e8f0;
+      padding: 8px;
+    }
+
+    .ng-input {
+      padding: 8px;
+    }
+    .ng-value {
+      padding: 8px;
+    }
+  }
+}

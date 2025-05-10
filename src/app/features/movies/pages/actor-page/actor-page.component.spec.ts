@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActorPageComponent } from './actor-page.component';
-import {provideRouter} from '@angular/router';
+import { provideRouter } from '@angular/router';
 
 describe('ActorPageComponent', () => {
   let component: ActorPageComponent;
@@ -10,11 +10,8 @@ describe('ActorPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ActorPageComponent],
-      providers: [
-        provideRouter([]),
-      ],
-    })
-    .compileComponents();
+      providers: [provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ActorPageComponent);
     component = fixture.componentInstance;

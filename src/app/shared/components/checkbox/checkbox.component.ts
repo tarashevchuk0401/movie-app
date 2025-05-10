@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  forwardRef,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
@@ -23,7 +29,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() idValue: string = '';
 
   onChange: any = () => {};
-  onTouch: any = () => {}; 
+  onTouch: any = () => {};
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
