@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <h2>Create new chat</h2>
+  @for (user of participantsList(); track user.id) {
+    <div (click)="onCreate(user.id)" class="user-card">
+      <div class="name">{{ user.firstName }} {{ user.lastName }}</div>
+      <div class="email">{{ user.email }}</div>
+    </div>
+  }
+</div>

@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
   websocketService = inject(WebsocketService);
 
   ngOnInit() {
-    this.breadcrumbService.set('@home', 'Home page');
-    this.getMessage();
+    // this.breadcrumbService.set('@home', 'Home page');
+    // this.getMessage();
   }
 
   getMessage() {

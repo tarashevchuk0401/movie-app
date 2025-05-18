@@ -11,6 +11,40 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'list', pathMatch: 'full' },
+
+      {
+        path: 'chat',
+        loadComponent: () =>
+          import('./features/chat/chat.component').then((m) => m.ChatComponent),
+        data: { breadcrumb: { alias: 'chat' } },
+        children: [
+          { path: '', redirectTo: 'list', pathMatch: 'full' },
+          {
+            path: 'list',
+            loadComponent: () =>
+              import(
+                './features/chat/pages/chat-list/chat-list.component'
+              ).then((m) => m.ChatListComponent),
+            data: { breadcrumb: { alias: 'chat' } },
+          },
+          {
+            path: 'create',
+            loadComponent: () =>
+              import(
+                './features/chat/pages/create-chat/create-chat.component'
+              ).then((m) => m.CreateChatComponent),
+            data: { breadcrumb: { alias: 'create' } },
+          },
+          {
+            path: 'details/:id',
+            loadComponent: () =>
+              import(
+                './features/chat/pages/chat-details/chat-details.component'
+              ).then((m) => m.ChatDetailsComponent),
+            data: { breadcrumb: { alias: 'chat-details' } },
+          },
+        ],
+      },
       {
         path: 'list',
         loadComponent: () =>

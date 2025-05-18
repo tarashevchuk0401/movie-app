@@ -1,0 +1,16 @@
+<app-main-button routerLink="/home/chat/create">New Chat</app-main-button>
+<div class="wrapper">
+  <h2>Chats</h2>
+  @for (chat of chatList(); track chat.id) {
+    <div [routerLink]="'/home/chat/details/' + chat.id" class="chat-card">
+      <div class="title">{{ chat.title }}</div>
+      <div class="participants">
+        @for (user of chat.participants; track user.id) {
+          @if (user.id !== authService.user()?.id) {
+            <div>{{ user.firstName }} {{ user.lastName }}</div>
+          }
+        }
+      </div>
+    </div>
+  }
+</div>

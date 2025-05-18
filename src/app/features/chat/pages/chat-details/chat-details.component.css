@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .message {
+    background-color: lightgray;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    width: 50%;
+    color: black;
+  }
+}

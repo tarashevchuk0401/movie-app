@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { ApiService } from '../abstracts/api-service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { LoginResponseDto } from '../dto/auth/responses/login-response.dto';
 import { LogInRequest } from '../dto/auth/requests/log-in-request.dto';
 import { SuccessResponse } from '../interfaces/success-response';
@@ -12,6 +12,8 @@ import { GetMeResponse } from '../dto/auth/responses/get-me-response.dto';
   providedIn: 'root',
 })
 export class AuthService extends ApiService {
+  user = signal<GetMeResponse | null>(null);
+
   signIn(data: LogInRequest): Observable<LoginResponseDto> {
     return this.http.post<LoginResponseDto>(
       `${this.baseUrl}/auth/sign-in`,
@@ -27,7 +29,9 @@ export class AuthService extends ApiService {
   }
 
   getMe(): Observable<GetMeResponse> {
-    return this.http.get<GetMeResponse>(`${this.baseUrl}/auth/me`);
+    return this.http
+      .get<GetMeResponse>(`${this.baseUrl}/auth/me`)
+      .pipe(tap((response) => this.user.set(response)));
   }
 
   setCookieToken(tokenType: AuthTokens, token: string): void {
