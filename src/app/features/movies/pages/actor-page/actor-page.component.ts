@@ -5,7 +5,7 @@ import { BreadcrumbService } from 'xng-breadcrumb';
   selector: 'app-actor-page',
   imports: [],
   templateUrl: './actor-page.component.html',
-  styleUrl: './actor-page.component.css',
+  styleUrl: './actor-page.component.scss',
 })
 export class ActorPageComponent implements OnInit {
   breadcrumbService = inject(BreadcrumbService);

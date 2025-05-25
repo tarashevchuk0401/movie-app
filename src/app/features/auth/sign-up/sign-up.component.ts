@@ -22,7 +22,7 @@ import { SignUpRequest } from '../../../core/dto/auth/requests/sign-up-request.d
     MainButtonComponent,
     RouterLink,
   ],
-  styleUrl: './sign-up.component.css',
+  styleUrl: './sign-up.component.scss',
 })
 export class SignUpComponent {
   fb = inject(FormBuilder);

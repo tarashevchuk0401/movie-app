@@ -22,7 +22,7 @@ import {
   selector: 'app-custom-selector',
   imports: [NgSelectModule, FormsModule],
   templateUrl: './custom-selector.component.html',
-  styleUrl: './custom-selector.component.css',
+  styleUrl: './custom-selector.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

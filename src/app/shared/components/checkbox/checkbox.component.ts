@@ -15,7 +15,7 @@ import {
   selector: 'app-checkbox',
   imports: [FormsModule],
   templateUrl: './checkbox.component.html',
-  styleUrl: './checkbox.component.css',
+  styleUrl: './checkbox.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

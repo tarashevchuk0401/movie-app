@@ -24,7 +24,7 @@ import {
     ReactiveFormsModule,
   ],
   templateUrl: './movie-item.component.html',
-  styleUrl: './movie-item.component.css',
+  styleUrl: './movie-item.component.scss',
 })
 export class MovieItemComponent implements OnInit {
   movie = input.required<Movie>();

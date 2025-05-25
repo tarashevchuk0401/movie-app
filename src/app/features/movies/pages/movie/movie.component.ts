@@ -23,7 +23,7 @@ import { Movie } from '../../interfaces/movie';
     MatPaginatorModule,
   ],
   templateUrl: './movie.component.html',
-  styleUrl: './movie.component.css',
+  styleUrl: './movie.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieComponent implements OnInit {

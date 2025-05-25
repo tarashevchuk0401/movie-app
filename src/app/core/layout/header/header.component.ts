@@ -24,7 +24,7 @@ import {MainButtonComponent} from '../../../shared/components/main-button/main-b
   ],
   templateUrl: './header.component.html',
   standalone: true,
-  styleUrl: './header.component.css',
+  styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {

@@ -10,7 +10,7 @@ import { NgClass } from '@angular/common';
   selector: 'app-main-button',
   imports: [NgClass],
   templateUrl: './main-button.component.html',
-  styleUrl: './main-button.component.css',
+  styleUrl: './main-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainButtonComponent {

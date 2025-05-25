@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-chat',
   templateUrl: './create-chat.component.html',
-  styleUrl: './create-chat.component.css',
+  styleUrl: './create-chat.component.scss',
   imports: [JsonPipe],
 })
 export class CreateChatComponent implements OnInit {
@@ -23,6 +23,8 @@ export class CreateChatComponent implements OnInit {
   }
 
   onCreate(userId: string): void {
-    this.chatService.createChat(userId).subscribe(() => this.router.navigate(['/home/chat']),);
+    this.chatService.createChat(userId).subscribe((d) => {
+      return this.router.navigate([`/home/chat/details/${d.id}`]);
+    });
   }
 }

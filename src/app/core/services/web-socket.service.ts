@@ -31,7 +31,6 @@ export class WebsocketService {
   getMessages(): Observable<Message> {
     return new Observable((observer) => {
       this.socket.on('private-message', (data: Message) => {
-        console.log(data);
        return  observer.next(data)
       });
     });

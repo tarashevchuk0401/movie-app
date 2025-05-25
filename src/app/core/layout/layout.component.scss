@@ -1,12 +1,14 @@
 main {
   background-color: rgb(17, 24, 39);
-  min-height: 100vh;
-  overflow: hidden;
+  height: calc(100vh - 90px);
+  //overflow: auto;
   display: flex;
   justify-content: center;
 
-  div {
+  .router {
     max-width: 1300px;
     min-width: 80dvw;
+    padding: 1rem;
+    overflow: auto;
   }
 }

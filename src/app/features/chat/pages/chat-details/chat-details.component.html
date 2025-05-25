@@ -1,5 +1,11 @@
 <div class="wrapper">
-  <button (click)="scrollToBottom()">SCR</button>
+  <div class="header">
+    @for (user of receiver(); track $index) {
+      <mat-icon>person</mat-icon>
+      <div class="receiver">{{ user }}</div>
+    }
+  </div>
+
   <div class="message-box" #messageBox>
     @for (message of messages(); track message.id) {
       <div
@@ -12,8 +18,6 @@
       >
         <div class="message-body">
           <div class="message-body-text">
-<!--            <div>SENDER {{message.sender.id}}</div>-->
-<!--            <div>CURENT {{authService.currentUserId()}}</div>-->
             {{ message.text }}
           </div>
           <div class="message-body-date">
@@ -23,9 +27,13 @@
       </div>
     }
   </div>
-  <app-custom-input
-    [formControl]="newMessageText"
-    type="textarea"
-  ></app-custom-input>
-  <app-main-button (click)="sendMessage()">Send </app-main-button>
+  <div class="action">
+    <app-custom-input
+      [formControl]="newMessageText"
+      type="textarea"
+    ></app-custom-input>
+    <app-main-button class="send" (click)="sendMessage()"
+      ><div>SEND</div>
+    </app-main-button>
+  </div>
 </div>

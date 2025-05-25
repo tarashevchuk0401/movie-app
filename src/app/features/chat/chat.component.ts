@@ -5,6 +5,6 @@ import {RouterOutlet} from '@angular/router';
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   imports: [RouterOutlet],
-  styleUrl: './chat.component.css',
+  styleUrl: './chat.component.scss',
 })
 export class ChatComponent {}

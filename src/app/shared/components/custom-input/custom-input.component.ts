@@ -12,7 +12,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   selector: 'app-custom-input',
   imports: [],
   templateUrl: './custom-input.component.html',
-  styleUrl: './custom-input.component.css',
+  styleUrl: './custom-input.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

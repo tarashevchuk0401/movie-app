@@ -40,7 +40,7 @@ import { CheckboxComponent } from '../../../../shared/components/checkbox/checkb
     CheckboxComponent,
   ],
   templateUrl: './new-movie.component.html',
-  styleUrl: './new-movie.component.css',
+  styleUrl: './new-movie.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewMovieComponent implements OnInit {

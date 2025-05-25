@@ -13,6 +13,9 @@
     max-width: 600px;
     padding: 10px;
     background-color: #1a1a1a;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 
     .title {
       font-size: 1.2rem;
@@ -20,6 +23,7 @@
 
     .participants {
       font-style: italic;
+      margin: 0 12px;
     }
 
     &:hover {

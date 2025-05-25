@@ -18,7 +18,7 @@ import { AuthTokens } from '../../../core/types/token.enum';
     MainButtonComponent,
     RouterLink,
   ],
-  styleUrl: './sign-in.component.css',
+  styleUrl: './sign-in.component.scss',
 })
 export class SignInComponent {
   fb = inject(FormBuilder);

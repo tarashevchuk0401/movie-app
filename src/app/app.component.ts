@@ -13,7 +13,7 @@ import { WebsocketService } from './core/services/web-socket.service';
   imports: [RouterOutlet],
   providers: [BreadcrumbService],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {

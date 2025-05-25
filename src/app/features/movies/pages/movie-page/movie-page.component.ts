@@ -9,7 +9,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   selector: 'app-movie-page',
   imports: [RouterLink, RouterOutlet, MainButtonComponent],
   templateUrl: './movie-page.component.html',
-  styleUrl: './movie-page.component.css',
+  styleUrl: './movie-page.component.scss',
 })
 export class MoviePageComponent implements OnInit {
   breadcrumbService = inject(BreadcrumbService);

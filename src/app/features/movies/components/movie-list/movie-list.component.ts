@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-movie-list',
   imports: [MovieItemComponent, FormsModule],
   templateUrl: './movie-list.component.html',
-  styleUrl: './movie-list.component.css',
+  styleUrl: './movie-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieListComponent {
