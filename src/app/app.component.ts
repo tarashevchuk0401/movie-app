@@ -19,18 +19,18 @@ import { WebsocketService } from './core/services/web-socket.service';
 export class AppComponent implements OnInit {
   title = 'movies-app';
   breadcrumbService = inject(BreadcrumbService);
-  websocketService = inject(WebsocketService);
+  // websocketService = inject(WebsocketService);
 
   ngOnInit() {
-    // this.breadcrumbService.set('@home', 'Home page');
+    this.breadcrumbService.set('@home', 'Home page');
     // this.getMessage();
   }
 
-  getMessage() {
-    this.websocketService.getMessages().subscribe((d) => console.log('get', d));
-  }
-
-  sendMessage() {
-    this.websocketService.sendMessage('My message');
-  }
+  // getMessage() {
+  //   this.websocketService.getMessages().subscribe((d) => console.log('get', d));
+  // }
+  //
+  // sendMessage() {
+  //   this.websocketService.sendMessage('My message');
+  // }
 }

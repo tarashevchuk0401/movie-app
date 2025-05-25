@@ -8,10 +8,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./core/layout/layout.component').then((m) => m.LayoutComponent),
     data: { breadcrumb: { alias: 'home' } },
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'list', pathMatch: 'full' },
-
       {
         path: 'chat',
         loadComponent: () =>

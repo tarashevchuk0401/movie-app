@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import {computed, Injectable, signal} from '@angular/core';
 import { ApiService } from '../abstracts/api-service';
 import { Observable, tap } from 'rxjs';
 import { LoginResponseDto } from '../dto/auth/responses/login-response.dto';
@@ -13,6 +13,7 @@ import { GetMeResponse } from '../dto/auth/responses/get-me-response.dto';
 })
 export class AuthService extends ApiService {
   user = signal<GetMeResponse | null>(null);
+  currentUserId = computed(() => this.user()?.id)
 
   signIn(data: LogInRequest): Observable<LoginResponseDto> {
     return this.http.post<LoginResponseDto>(
