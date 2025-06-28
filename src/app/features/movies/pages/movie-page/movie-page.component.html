@@ -17,17 +17,20 @@
         <p>{{ movie()?.description }}</p>
       </div>
 
-      <div
-        class="movie-actors"
-        *ngIf="movie()?.actors && movie()?.actors.length > 0"
-      >
-        <h2>Cast</h2>
-        <div class="actors-grid">
-          @for (actor of movie()?.actors; track $index) {
-            <span>{{ actor }}</span>
+      @if (movie()) {
+        <div class="movie-details">
+          @if (movie()!.actors!.length > 0) {
+            <div class="movie-actors">
+              <h2>Cast</h2>
+              <div class="actors-grid">
+                @for (actor of movie()!.actors; track $index) {
+                  <span>{{ actor }}</span>
+                }
+              </div>
+            </div>
           }
         </div>
-      </div>
+      }
     </div>
 
     <div class="movie-actions">

@@ -1,14 +1,13 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ChatService } from '../../../../core/services/chat-service';
 import { Participant } from '../../../../core/dto/chat/chat-interface';
-import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-chat',
   templateUrl: './create-chat.component.html',
   styleUrl: './create-chat.component.scss',
-  imports: [JsonPipe],
+  imports: [],
 })
 export class CreateChatComponent implements OnInit {
   chatService = inject(ChatService);
