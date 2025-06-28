@@ -20,6 +20,10 @@ export class MoviePageComponent implements OnInit {
 
   ngOnInit() {
     this.breadcrumbService.set('@movie', 'Movie');
+    this.getMovie();
+  }
+
+  getMovie(): void {
     this.moviesService.getItem(Number(this.movieId)).subscribe((movie) => {
       this.movie.set(movie);
     });
