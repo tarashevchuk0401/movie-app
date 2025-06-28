@@ -1,0 +1,16 @@
+.wrapper {
+  display: grid;
+  height: 80vh;
+  grid-template-rows: 30px auto minmax(20vh, 50vh) auto;
+
+  .header {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    background-color: rgb(17, 24, 39);
+    align-items: center;
+    padding: 3px;
+    font-size: 1.3rem;
+    grid-row: 1/2;
+  }
+}

@@ -27,3 +27,8 @@ export interface Chat extends ChatBase {
 export interface ChatDetails extends Chat {
   messages: Message[];
 }
+
+export interface AiMessage{
+  text:string,
+  createdAt:Date,
+}

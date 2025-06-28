@@ -12,6 +12,14 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'list', pathMatch: 'full' },
       {
+        path: 'ai',
+        loadComponent: () =>
+          import('./features/chat/pages/chat-ai/chat-ai.component').then(
+            (m) => m.ChatAiComponent,
+          ),
+        data: { breadcrumb: { alias: 'ai-chat' } },
+      },
+      {
         path: 'chat',
         loadComponent: () =>
           import('./features/chat/chat.component').then((m) => m.ChatComponent),
@@ -42,6 +50,7 @@ export const routes: Routes = [
               ).then((m) => m.ChatDetailsComponent),
             data: { breadcrumb: { alias: 'chat-details' } },
           },
+
         ],
       },
       {

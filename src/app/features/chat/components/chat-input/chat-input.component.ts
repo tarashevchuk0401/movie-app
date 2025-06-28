@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import { CustomInputComponent } from '../../../../shared/components/custom-input/custom-input.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MainButtonComponent } from '../../../../shared/components/main-button/main-button.component';
@@ -11,8 +11,11 @@ import { MainButtonComponent } from '../../../../shared/components/main-button/m
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChatInputComponent {
+  predefinedMessage = input<string>('')
   sendMessage = output<string>();
-  messageInput = new FormControl('');
+  messageInput = new FormControl();
+
+  //TODO: SET predefined value
 
   send(): void {
     if (this.messageInput.value) {

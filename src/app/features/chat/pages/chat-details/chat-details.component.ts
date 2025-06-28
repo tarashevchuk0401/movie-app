@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  ElementRef,
   inject,
   OnInit,
   signal,
@@ -11,7 +10,6 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { ChatService } from '../../../../core/services/chat-service';
 import { Message, Participant } from '../../../../core/dto/chat/chat-interface';
-import { DatePipe, NgClass } from '@angular/common';
 import { AuthService } from '../../../../core/services/auth.service';
 import {
   ChatMessage,

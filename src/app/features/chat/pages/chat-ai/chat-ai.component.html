@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="header">
+    <mat-icon>person</mat-icon>
+    <div class="receiver">Movie Expert</div>
+  </div>
+
+  <app-chat-message-box [messages]="messages()"></app-chat-message-box>
+
+  <app-chat-input
+    [predefinedMessage]="'Recommend comedy film for whole family '"
+    (sendMessage)="sendMessage($event)"
+  ></app-chat-input>
+</div>
