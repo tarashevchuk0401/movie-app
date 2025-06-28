@@ -14,65 +14,52 @@
 
     grid-row: 1/2;
   }
-
-  .message-box {
-    grid-row: 3/4;
-    max-height: 60vh;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    scroll-behavior: smooth;
-    padding: 0.5rem;
-
-    .message {
-      display: flex;
-
-      &-body {
-        background-color: #4b5563;
-        color: white;
-        padding: 0.2rem;
-        border-radius: 0.5rem;
-
-        &-date {
-          font-size: 0.6rem;
-          margin-top: 2px;
-        }
-      }
-    }
-
-    .not-my-message {
-      display: flex;
-      justify-content: flex-start;
-      max-width: 50%;
-    }
-
-    .my-message {
-      display: flex;
-      justify-content: flex-end;
-
-      .message-body {
-        background-color: lightgray;
-        color: black;
-        max-width: 50%;
-      }
-
-      .message-body-date {
-        text-align: right;
-      }
-    }
-  }
-
-  .action {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    grid-row: 4/5;
-
-    .send {
-      display: block;
-    }
-  }
+  //
+  //.message-box {
+  //  grid-row: 3/4;
+  //  max-height: 60vh;
+  //  overflow-y: scroll;
+  //  display: flex;
+  //  flex-direction: column;
+  //  gap: 0.7rem;
+  //  scroll-behavior: smooth;
+  //  padding: 0.5rem;
+  //
+  //  .message {
+  //    display: flex;
+  //
+  //    &-body {
+  //      background-color: #4b5563;
+  //      color: white;
+  //      padding: 0.2rem;
+  //      border-radius: 0.5rem;
+  //
+  //      &-date {
+  //        font-size: 0.6rem;
+  //        margin-top: 2px;
+  //      }
+  //    }
+  //  }
+  //
+  //  .not-my-message {
+  //    display: flex;
+  //    justify-content: flex-start;
+  //    max-width: 50%;
+  //  }
+  //
+  //  .my-message {
+  //    display: flex;
+  //    justify-content: flex-end;
+  //
+  //    .message-body {
+  //      background-color: lightgray;
+  //      color: black;
+  //      max-width: 50%;
+  //    }
+  //
+  //    .message-body-date {
+  //      text-align: right;
+  //    }
+  //  }
+  //}
 }

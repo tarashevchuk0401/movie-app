@@ -1,0 +1,12 @@
+.action {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  grid-row: 4/5;
+
+  .send {
+    display: block;
+  }
+}

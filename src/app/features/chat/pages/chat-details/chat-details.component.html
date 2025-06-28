@@ -6,34 +6,29 @@
     }
   </div>
 
-  <div class="message-box" #messageBox>
-    @for (message of messages(); track message.id) {
-      <div
-        class="message"
-        [ngClass]="
-          authService.currentUserId() === message.sender.id
-            ? 'my-message'
-            : 'not-my-message'
-        "
-      >
-        <div class="message-body">
-          <div class="message-body-text">
-            {{ message.text }}
-          </div>
-          <div class="message-body-date">
-            {{ message.createdAt | date: "HH:mm" }}
-          </div>
-        </div>
-      </div>
-    }
-  </div>
-  <div class="action">
-    <app-custom-input
-      [formControl]="newMessageText"
-      type="textarea"
-    ></app-custom-input>
-    <app-main-button class="send" (click)="sendMessage()"
-      ><div>SEND</div>
-    </app-main-button>
-  </div>
+  <app-chat-message-box #messageBox [messages]="messages()"></app-chat-message-box>
+
+<!--  <div class="message-box" #messageBox>-->
+<!--    @for (message of messages(); track message.id) {-->
+<!--      <div-->
+<!--        class="message"-->
+<!--        [ngClass]="-->
+<!--          authService.currentUserId() === message.sender.id-->
+<!--            ? 'my-message'-->
+<!--            : 'not-my-message'-->
+<!--        "-->
+<!--      >-->
+<!--        <div class="message-body">-->
+<!--          <div class="message-body-text">-->
+<!--            {{ message.text }}-->
+<!--          </div>-->
+<!--          <div class="message-body-date">-->
+<!--            {{ message.createdAt | date: "HH:mm" }}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    }-->
+<!--  </div>-->
+
+  <app-chat-input (sendMessage)="sendMessage($event)"></app-chat-input>
 </div>

@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
@@ -12,46 +11,41 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { ChatService } from '../../../../core/services/chat-service';
 import { Message, Participant } from '../../../../core/dto/chat/chat-interface';
-import { DatePipe, JsonPipe, NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { AuthService } from '../../../../core/services/auth.service';
-import { CustomInputComponent } from '../../../../shared/components/custom-input/custom-input.component';
-import { MainButtonComponent } from '../../../../shared/components/main-button/main-button.component';
 import {
   ChatMessage,
   WebsocketService,
 } from '../../../../core/services/web-socket.service';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { delay } from 'rxjs';
 import { MatIcon } from '@angular/material/icon';
+import { ChatInputComponent } from '../../components/chat-input/chat-input.component';
+import { ChatMessageBoxComponent } from '../../components/chat-message-box/chat-message-box.component';
 
 @Component({
   selector: 'app-chat-details',
   templateUrl: './chat-details.component.html',
   styleUrl: './chat-details.component.scss',
   imports: [
-    NgClass,
-    DatePipe,
-    CustomInputComponent,
-    MainButtonComponent,
     ReactiveFormsModule,
-    JsonPipe,
     MatIcon,
+    ChatInputComponent,
+    ChatMessageBoxComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChatDetailsComponent implements OnInit, AfterViewInit {
+export class ChatDetailsComponent implements OnInit {
   activatedRoute = inject(ActivatedRoute);
   chatService = inject(ChatService);
   authService = inject(AuthService);
   websocketService = inject(WebsocketService);
   destroyRef = inject(DestroyRef);
-
-  @ViewChild('messageBox') messageBox!: ElementRef;
+  @ViewChild('messageBox') messageBoxComponent!: ChatMessageBoxComponent;
 
   chatId = this.activatedRoute.snapshot.paramMap.get('id');
   messages = signal<Message[]>([]);
-  newMessageText = new FormControl('');
   receiver = signal<string[]>([]);
 
   ngOnInit() {
@@ -60,23 +54,16 @@ export class ChatDetailsComponent implements OnInit, AfterViewInit {
     this.getMessages();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      // this.scrollToBottom();
-    }, 100);
-  }
-
-  sendMessage() {
-    if (!this.newMessageText.value) return;
+  sendMessage(message: string) {
+    if (!message) return;
 
     const request: ChatMessage = {
       roomId: this.chatId!,
-      text: this.newMessageText.value ?? '',
+      text: message,
       sender: this.authService.currentUserId()!,
     };
 
     this.websocketService.sendMessage(request);
-    this.newMessageText.reset();
   }
 
   private joinRoom(): void {
@@ -95,7 +82,7 @@ export class ChatDetailsComponent implements OnInit, AfterViewInit {
           ),
         );
         setTimeout(() => {
-          this.scrollToBottom();
+          this.messageBoxComponent?.scrollToBottom();
         }, 100);
       });
   }
@@ -112,10 +99,5 @@ export class ChatDetailsComponent implements OnInit, AfterViewInit {
       .filter((user) => user.id !== this.authService.currentUserId())
       .map((u) => `${u.firstName} ${u.lastName}`);
     this.receiver.set(names);
-  }
-
-  private scrollToBottom(): void {
-    this.messageBox.nativeElement.scrollTop =
-      this.messageBox.nativeElement.scrollHeight;
   }
 }

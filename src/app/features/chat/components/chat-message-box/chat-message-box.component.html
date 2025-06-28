@@ -1,0 +1,21 @@
+<div class="message-box" #messageBox>
+  @for (message of messages(); track message.id) {
+    <div
+      class="message"
+      [ngClass]="
+        authService.currentUserId() === message.sender.id
+          ? 'my-message'
+          : 'not-my-message'
+      "
+    >
+      <div class="message-body">
+        <div class="message-body-text">
+          {{ message.text }}
+        </div>
+        <div class="message-body-date">
+          {{ message.createdAt | date: "HH:mm" }}
+        </div>
+      </div>
+    </div>
+  }
+</div>
