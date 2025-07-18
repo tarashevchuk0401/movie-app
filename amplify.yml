@@ -8,7 +8,7 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: dist/movies-app
+    baseDirectory: dist/movies-app/browser
     files:
       - '**/*'
   cache:
