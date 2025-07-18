@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { Observable } from 'rxjs';
-import {consumerPollProducersForChange} from '@angular/core/primitives/signals';
-import {Message} from '../dto/chat/chat-interface';
-import {environment} from '../../../environments/environment';
+import { consumerPollProducersForChange } from '@angular/core/primitives/signals';
+import { Message } from '../dto/chat/chat-interface';
+import { environment } from '../../../environments/environment';
 
 export interface ChatMessage {
   roomId: string;
@@ -17,7 +17,6 @@ export interface ChatMessage {
 export class WebsocketService {
   private socket: Socket;
   private baseUrl = environment.apiUrl;
-
 
   constructor() {
     this.socket = io(this.baseUrl);
@@ -34,7 +33,7 @@ export class WebsocketService {
   getMessages(): Observable<Message> {
     return new Observable((observer) => {
       this.socket.on('private-message', (data: Message) => {
-       return  observer.next(data)
+        return observer.next(data);
       });
     });
   }
