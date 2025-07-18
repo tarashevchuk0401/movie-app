@@ -16,7 +16,8 @@ export interface ChatMessage {
 })
 export class WebsocketService {
   private socket: Socket;
-  private baseUrl = environment.apiUrl;
+  // private baseUrl = environment.apiUrl;
+  private baseUrl = 'http://54.166.53.187:3000';
 
   constructor() {
     this.socket = io(this.baseUrl);
