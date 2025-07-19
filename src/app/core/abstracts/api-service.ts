@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export abstract class ApiService {
   // baseUrl = environment.apiUrl;
-  baseUrl = 'http://54.166.53.187:3000';
+  baseUrl = 'http://52.90.215.190:3000';
 
   constructor(protected http: HttpClient) {}
 }
